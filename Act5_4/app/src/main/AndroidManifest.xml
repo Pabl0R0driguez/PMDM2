@@ -13,6 +13,18 @@
         android:theme="@style/Theme.Actividad5_4"
         tools:targetApi="31">
         <activity
+            android:name=".Teclado4"
+            android:exported="false" />
+        <activity
+            android:name=".Teclado3"
+            android:exported="false" />
+        <activity
+            android:name=".Teclado2"
+            android:exported="false" />
+        <activity
+            android:name=".Teclado1"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
