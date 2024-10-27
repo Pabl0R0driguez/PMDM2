@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Estilo para el botón -->
+    <style name="MyMaterialButtonStyle" parent="Widget.MaterialComponents.Button">
+        <item name="android:backgroundTint">#009688</item>
+        <item name="android:textColor">#E91E63</item>
+        <item name="android:padding">6dp</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:layout_marginTop">5dp</item>
+        <item name="android:layout_marginRight">10dp</item>
+
+    </style>
+
+    <!-- Estilo para un TextView -->
+    <style name="MiVisorStyle" parent="Widget.MaterialComponents.TextView">
+        <item name="fontFamily">@font/colour</item> <!-- Asegúrate de que este archivo exista -->
+        <item name="android:layout_marginBottom">10dp</item>
+        <item name="android:background">#9C27B0</item>
+        <item name="android:textColor">#8BC34A</item>
+    </style>
+
+    <!-- Estilo corregido para el botón redondeado -->
+    <style name="MyMaterialButtonStyleBis" parent="Widget.MaterialComponents.Button">
+        <item name="android:background">@drawable/boton_redondo</item>
+        <item name="android:textColor">#FFC107</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:padding">6dp</item>
+        <item name="android:layout_marginRight">10dp</item>
+        <item name="android:layout_marginTop">5dp</item>
+    </style>
+
+</resources>
