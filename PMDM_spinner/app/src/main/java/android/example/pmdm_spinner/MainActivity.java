@@ -71,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
         boton6.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, progressbar.class);
+                Intent intent = new Intent(MainActivity.this, MainActivity7.class);
                 startActivity(intent);
             }
         });
