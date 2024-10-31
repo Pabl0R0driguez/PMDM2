@@ -1,55 +1,57 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:gravity="center"
     android:padding="16dp">
 
-    <!-- Botón de Registro -->
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Boton 1"
-        android:id="@+id/bt1"/>
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Boton 2"
-        android:id="@+id/bt2"/>
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Boton 3"
-        android:id="@+id/bt3"/>
 
-    <Button
+    <TextView
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Boton 4"
-        android:id="@+id/bt4"/>
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Boton 5"
-        android:id="@+id/bt5"/>
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Boton 6"
-        android:id="@+id/bt6"/>
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Boton 7"
-        android:id="@+id/bt7"/>
+        android:layout_height="match_parent"
+        android:id="@+id/texto"/>
 
-    <Button
+    <Switch
+        android:id="@+id/switchMonday"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Boton 8"
-        android:id="@+id/bt8"/>
+        android:text="Lunes" />
+
+    <Switch
+        android:id="@+id/switchTuesday"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Martes" />
+
+    <Switch
+        android:id="@+id/switchWednesday"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Miércoles" />
+
+    <Switch
+        android:id="@+id/switchThursday"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Jueves" />
+
+    <Switch
+        android:id="@+id/switchFriday"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Viernes" />
+
+    <Switch
+        android:id="@+id/switchSaturday"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sábado" />
+
+    <Switch
+        android:id="@+id/switchSunday"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Domingo" />
 
 
 </LinearLayout>
-
