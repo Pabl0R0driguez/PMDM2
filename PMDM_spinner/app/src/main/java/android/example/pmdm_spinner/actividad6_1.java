@@ -9,12 +9,12 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class MainActivity7 extends AppCompatActivity {
+public class actividad6_1 extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main7);
+        setContentView(R.layout.activity_main_6_1);
 
         TextView texto = findViewById(R.id.textView);
         ListView listado = findViewById(R.id.listView);

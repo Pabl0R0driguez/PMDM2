@@ -31,9 +31,9 @@ public class MainActivity8 extends AppCompatActivity {
         // Configurar el listener del Switch
         switchMonday.setOnCheckedChangeListener((buttonView, isChecked) -> {
             if (isChecked) {
-                textViewStatus.setText("Estado: ON");
+                textViewStatus.setText("LUNES");
             } else {
-                textViewStatus.setText("Estado: OFF");
+                textViewStatus.setText("Sin pulsar");
             }
         });
     }

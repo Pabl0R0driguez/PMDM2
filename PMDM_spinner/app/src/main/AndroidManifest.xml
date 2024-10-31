@@ -13,6 +13,7 @@
         android:theme="@style/Theme.PMDM_spinner"
         tools:targetApi="31">
         <activity
+<<<<<<< HEAD
             android:name=".MainActivity9"
             android:exported="false" />
         <activity
@@ -20,9 +21,12 @@
             android:exported="false" />
         <activity
             android:name=".MainActivity7"
+=======
+            android:name=".actividad6_1"
+>>>>>>> 3c4009f68861fe665da83affbd9b6569b33c971d
             android:exported="false" />
         <activity
-            android:name=".progressbar"
+            android:name=".actividad6_2"
             android:exported="false" />
         <activity
             android:name=".MainActivity6"
