@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".actividad6_1">
+    tools:context=".actividad6_2">
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -24,24 +24,15 @@
             android:layout_height="48dp"
             android:text="TextView" />
 
-        <ListView
-            android:id="@+id/listView"
+        <Spinner
+            android:id="@+id/spinner"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1" />
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Añadir"
-            android:id="@+id/bt9">
-
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Eliminar"
-                android:id="@+id/bt10"/>
-        </Button>
+            android:layout_weight="1"
+            android:numColumns="3"
+            android:layout_margin="8dp"
+            android:padding="8dp"
+            />
 
     </LinearLayout>
 

@@ -50,6 +50,12 @@
         android:text="Boton 8"
         android:id="@+id/bt8"/>
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Boton 9"
+        android:id="@+id/bt9"/>
+
 
 </LinearLayout>
 
