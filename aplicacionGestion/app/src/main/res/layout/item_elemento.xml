@@ -1,0 +1,57 @@
+<!-- item_elemento.xml -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="16dp">
+
+    <!-- Imagen de cada elemento -->
+    <ImageView
+        android:id="@+id/imagenElemento"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:scaleType="centerCrop" />
+
+    <!-- Título del elemento -->
+    <TextView
+        android:id="@+id/tituloElemento"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:layout_marginTop="8dp" />
+
+    <!-- Contenido del elemento -->
+    <TextView
+        android:id="@+id/contenidoElemento"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp" />
+
+    <!-- RatingBar para la puntuación -->
+    <RatingBar
+        android:id="@+id/puntuacionElemento"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:numStars="5"
+        android:rating="4.0"
+        android:layout_marginTop="8dp" />
+
+    <!-- Dirección web -->
+    <TextView
+        android:id="@+id/direccionWebElemento"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="www.ejemplo.com"
+        android:layout_marginTop="4dp"
+        android:textColor="@android:color/holo_blue_dark"/>
+
+    <!-- Teléfono -->
+    <TextView
+        android:id="@+id/telefonoElemento"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="+34 123 456 789"
+        android:layout_marginTop="4dp" />
+
+</LinearLayout>
