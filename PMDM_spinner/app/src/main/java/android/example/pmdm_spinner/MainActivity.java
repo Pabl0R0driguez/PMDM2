@@ -69,11 +69,11 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-        Button boton7 = findViewById(R.id.bt7);
-        boton7.setOnClickListener(new View.OnClickListener() {
+        Button boton8 = findViewById(R.id.bt8);
+        boton8.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, actividad6_2.class);
+                Intent intent = new Intent(MainActivity.this, radioButton.class);
                 startActivity(intent);
             }
         });
