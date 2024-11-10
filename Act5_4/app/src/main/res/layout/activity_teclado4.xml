@@ -1,0 +1,30 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- Título en la parte superior -->
+    <TextView
+        android:id="@+id/titleText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="PROGRAMACIÓN MULTIMEDIA"
+        android:textSize="20sp"
+        android:layout_marginTop="20dp"
+        android:textStyle="bold"
+        android:padding="10dp" />
+
+    <!-- EditText para la entrada de texto numérico -->
+    <EditText
+        android:id="@+id/integerInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Solo números"
+        android:inputType="number" />
+
+
+
+
+
+
+</RelativeLayout>
