@@ -3,75 +3,31 @@ package android.example.aplicaciongestion;
 public class Motocicletas {
     private String titulo;
     private String contenido;
+    private int puntuacion;
     private String direccionWeb;
     private String telefono;
-    private int imagenId;
-    private boolean seleccionado;
-    private float puntuacion;
+    private int imagenResId;  // ID del recurso de imagen
+    private boolean radioSeleccionado;
 
-    public Motocicletas(String titulo, String contenido, String direccionWeb, String telefono, int imagenId, boolean seleccionado, float puntuacion) {
+    // Constructor
+    public Motocicletas(String titulo, String contenido, int puntuacion, String direccionWeb, String telefono, int imagenResId, boolean radioSeleccionado) {
         this.titulo = titulo;
         this.contenido = contenido;
+        this.puntuacion = puntuacion;
         this.direccionWeb = direccionWeb;
         this.telefono = telefono;
-        this.imagenId = imagenId;
-        this.seleccionado = seleccionado;
-        this.puntuacion = puntuacion;
+        this.imagenResId = imagenResId;
+        this.radioSeleccionado = radioSeleccionado;
     }
 
-    public String getTitulo() {
-        return titulo;
-    }
+    // Getters y setters
+    public String getTitulo() { return titulo; }
+    public String getContenido() { return contenido; }
+    public int getPuntuacion() { return puntuacion; }
+    public String getDireccionWeb() { return direccionWeb; }
+    public String getTelefono() { return telefono; }
 
-    public void setTitulo(String titulo) {
-        this.titulo = titulo;
-    }
-
-    public String getContenido() {
-        return contenido;
-    }
-
-    public void setContenido(String contenido) {
-        this.contenido = contenido;
-    }
-
-    public String getDireccionWeb() {
-        return direccionWeb;
-    }
-
-    public void setDireccionWeb(String direccionWeb) {
-        this.direccionWeb = direccionWeb;
-    }
-
-    public String getTelefono() {
-        return telefono;
-    }
-
-    public void setTelefono(String telefono) {
-        this.telefono = telefono;
-    }
-
-    public int getImagenId() {
-        return imagenId;
-    }
-
-    public void setImagenId(int imagenId) {
-        this.imagenId = imagenId;
-    }
-
-    public boolean isSeleccionado() {
-        return seleccionado;
-    }
-
-    public void setSeleccionado(boolean seleccionado) {
-        this.seleccionado = seleccionado;
-    }
-
-    public float getPuntuacion() {
-        return puntuacion;
-    }
-
-    public void setPuntuacion(float puntuacion) {
-        this.puntuacion = puntuacion;
-    }
+    public int getImagenResId() { return imagenResId; }
+    public boolean isRadioSeleccionado() { return radioSeleccionado; }
+    public void setRadioSeleccionado(boolean radioSeleccionado) { this.radioSeleccionado = radioSeleccionado; }
 }
