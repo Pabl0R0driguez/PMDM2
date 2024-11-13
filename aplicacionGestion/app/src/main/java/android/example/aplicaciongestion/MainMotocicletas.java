@@ -22,6 +22,7 @@ public class MainMotocicletas extends AppCompatActivity {
         // Inicializar ListView
         listaMotos = findViewById(R.id.listaMotocicletas);
 
+
         // Crear y cargar la lista de motocicletas
         listaMotocicletas = new ArrayList<>();
         listaMotocicletas.add(new Motocicletas("Yamaha MT-07", "Moto de alta gama", 3, "https://honda.com/image.jpg", "623176354", R.drawable.moto1, true));

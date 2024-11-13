@@ -13,10 +13,10 @@
         android:theme="@style/Theme.PMDM_spinner"
         tools:targetApi="31">
         <activity
-
-            android:name=".radioButton"
-
-            android:name=".actividad6_4"
+            android:name=".botones_6_1_2"
+            android:exported="false" />
+        <activity
+            android:name=".actividad6_1_2"
             android:exported="false" />
         <activity
             android:name=".actividad6_3"

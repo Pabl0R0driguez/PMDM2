@@ -78,8 +78,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        Button boton8 = findViewById(R.id.bt7);
-        boton8.setOnClickListener(new View.OnClickListener() {
+        Button boton9 = findViewById(R.id.bt7);
+        boton9.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, MainActivity8.class);
@@ -87,8 +87,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        Button boton9 = findViewById(R.id.bt8);
-        boton9.setOnClickListener(new View.OnClickListener() {
+        Button boton10 = findViewById(R.id.bt8);
+        boton10.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, MainActivity9.class);
@@ -96,14 +96,34 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        Button boton10 = findViewById(R.id.bt9);
-        boton10.setOnClickListener(new View.OnClickListener() {
+        Button boton11 = findViewById(R.id.bt9);
+        boton11.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, actividad6_3.class);
                 startActivity(intent);
             }
         });
+
+        Button boton12 = findViewById(R.id.bt10);
+        boton12.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, actividad6_2.class);
+                startActivity(intent);
+            }
+        });
+
+        Button boton13 = findViewById(R.id.bt11);
+        boton13.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, actividad6_1.class);
+                startActivity(intent);
+            }
+        });
+
+
 
 
 
