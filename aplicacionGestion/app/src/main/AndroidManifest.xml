@@ -3,6 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="android.example.aplicaciongestion">
 
+    <!-- Permiso para acceso a Internet, necesario para cargar URLs en WebView_act (si lo usas en el futuro) -->
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -12,15 +15,26 @@
         android:theme="@style/Theme.AplicacionGestion"
         tools:targetApi="31">
 
+        <!-- Actividad principal que es la primera que se lanza (Login) -->
         <activity
-            android:name=".MainMotocicletas"
+            android:name=".LoginMain"
             android:exported="true">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <!-- Actividad para mostrar la lista de motocicletas -->
+        <activity
+            android:name=".MainMotocicletas"
+            android:exported="true" />
+
+        <!-- Definir la actividad WebView_act -->
+        <activity
+            android:name=".WebView_act"
+            android:exported="true" />
+
     </application>
 
 </manifest>

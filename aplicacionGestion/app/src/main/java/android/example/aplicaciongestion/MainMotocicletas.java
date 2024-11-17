@@ -1,6 +1,9 @@
 package android.example.aplicaciongestion;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ListView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,6 +16,8 @@ public class MainMotocicletas extends AppCompatActivity {
     private ListView listaMotos;
     private MotocicletasAdapter adaptador;
     private List<Motocicletas> listaMotocicletas;
+    private Button botonWebView;  // Definir el Button
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,6 +27,8 @@ public class MainMotocicletas extends AppCompatActivity {
         // Inicializar ListView
         listaMotos = findViewById(R.id.listaMotocicletas);
 
+        // Inicializar el Button
+        botonWebView = findViewById(R.id.button2);  // Aquí inicializas el botón
 
         // Crear y cargar la lista de motocicletas
         listaMotocicletas = new ArrayList<>();
@@ -33,5 +40,15 @@ public class MainMotocicletas extends AppCompatActivity {
         // Configurar el Adaptador para el ListView
         adaptador = new MotocicletasAdapter(this, listaMotocicletas);
         listaMotos.setAdapter(adaptador); // Usar directamente el adaptador con la lista
+
+        // Configurar el botón para abrir la actividad WebView_Act
+        botonWebView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Abrir la actividad WebView_act cuando el botón es presionado
+                Intent intent = new Intent(MainMotocicletas.this, WebView_act.class);
+                startActivity(intent);
+            }
+        });
     }
 }
