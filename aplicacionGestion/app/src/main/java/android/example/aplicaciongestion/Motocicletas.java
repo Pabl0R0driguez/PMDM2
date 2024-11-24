@@ -31,4 +31,28 @@ public class Motocicletas implements Serializable {
     public int getImagenResId() { return imagenResId; }
     public boolean isRadioSeleccionado() { return radioSeleccionado; }
     public void setRadioSeleccionado(boolean radioSeleccionado) { this.radioSeleccionado = radioSeleccionado; }
+
+    public void setContenido(String contenido) {
+        this.contenido = contenido;
+    }
+
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
+    }
+
+    public void setPuntuacion(int puntuacion) {
+        this.puntuacion = puntuacion;
+    }
+
+    public void setDireccionWeb(String direccionWeb) {
+        this.direccionWeb = direccionWeb;
+    }
+
+    public void setPrecio(double precio) {
+        this.precio = precio;
+    }
+
+    public void setImagenResId(int imagenResId) {
+        this.imagenResId = imagenResId;
+    }
 }

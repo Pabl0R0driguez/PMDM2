@@ -1,6 +1,8 @@
 package android.example.aplicaciongestion;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -60,6 +62,8 @@ public class MotocicletasAdapter extends ArrayAdapter<Motocicletas> {
             elemento.setRadioSeleccionado(true);
             notifyDataSetChanged();
         });
+
+
 
         return view;
     }

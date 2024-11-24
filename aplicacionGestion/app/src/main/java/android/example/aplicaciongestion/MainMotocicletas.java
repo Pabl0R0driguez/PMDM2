@@ -2,8 +2,11 @@ package android.example.aplicaciongestion;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.ContextMenu;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -53,6 +56,10 @@ public class MainMotocicletas extends AppCompatActivity {
             startActivityForResult(intent, 1); // 1 es el requestCode
         });
 
+        // Registrar el ListView para el menú contextual
+        listaMotos.setOnCreateContextMenuListener(this);  // Registrar para el menú contextual
+
+
         // Configurar el botón flotante de borrar
         FloatingActionButton fabDelete = findViewById(R.id.fab_delete);
         fabDelete.setOnClickListener(v -> {
@@ -79,44 +86,70 @@ public class MainMotocicletas extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflar el menú desde el archivo XML
-        getMenuInflater().inflate(R.menu.menu_tools, menu);
+        getMenuInflater().inflate(R.menu.menu_tools, menu);  // Inflar el menú normal
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Verificar el ID del item seleccionado
         if (item.getItemId() == R.id.filtrar) {
-            // Ordenar las motocicletas por precio de mayor a menor
             Collections.sort(listaMotocicletas, new Comparator<Motocicletas>() {
                 @Override
                 public int compare(Motocicletas moto1, Motocicletas moto2) {
                     return Double.compare(moto2.getPrecio(), moto1.getPrecio()); // Orden descendente por precio
                 }
             });
-
-            // Notificar al adaptador para que actualice la vista
-            adaptador.notifyDataSetChanged();
+            adaptador.notifyDataSetChanged();  // Actualizar la vista
             return true;
         }
-
-        // Si no es el ítem que buscamos, delegamos el manejo al padre
         return super.onOptionsItemSelected(item);
     }
 
 
     @Override
+    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+        super.onCreateContextMenu(menu, v, menuInfo);
+        getMenuInflater().inflate(R.menu.menu_tools, menu);  // Inflar el menú contextual
+    }
+
+    @Override
+    public boolean onContextItemSelected(MenuItem item) {
+        AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
+
+        if (item.getItemId() == R.id.modificar) {
+            Motocicletas motoSeleccionada = listaMotocicletas.get(info.position);
+            Intent intent = new Intent(MainMotocicletas.this, ModificarMotocicleta.class);
+            intent.putExtra("motocicleta", motoSeleccionada);
+            startActivityForResult(intent, 2);  // 2 es el requestCode para "modificar"
+            return true;
+        }
+        return super.onContextItemSelected(item);
+    }
+
+    @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (resultCode == RESULT_OK && data != null) {
-            // Recuperar la motocicleta
-            Motocicletas nuevaMoto = (Motocicletas) data.getSerializableExtra("nuevaMotocicleta");
 
-            if (nuevaMoto != null) {
-                listaMotocicletas.add(nuevaMoto); // Añadir la nueva motocicleta a la lista
-                adaptador.notifyDataSetChanged(); // Notificar al adaptador para actualizar la vista
+        if (resultCode == RESULT_OK) {
+            if (requestCode == 2) { // 2 es el código de la actividad de "modificar"
+                // Obtener la motocicleta modificada desde el intent
+                Motocicletas motocicletaModificada = (Motocicletas) data.getSerializableExtra("motocicleta_modificada");
+
+                // Actualizar el elemento en la lista
+                for (int i = 0; i < listaMotocicletas.size(); i++) {
+                    if (listaMotocicletas.get(i).getTitulo() == motocicletaModificada.getTitulo()) {
+                        listaMotocicletas.set(i, motocicletaModificada);  // Reemplazar el objeto en la lista
+                        break;
+                    }
+                }
+
+                // Notificar al adaptador que la lista ha cambiado
+                adaptador.notifyDataSetChanged();
             }
         }
     }
+
 }
+
+
+
