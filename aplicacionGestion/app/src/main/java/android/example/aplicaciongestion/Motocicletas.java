@@ -1,21 +1,23 @@
 package android.example.aplicaciongestion;
 
-public class Motocicletas {
+import java.io.Serializable;
+
+public class Motocicletas implements Serializable {
     private String titulo;
     private String contenido;
     private int puntuacion;
     private String direccionWeb;
-    private String telefono;
-    private int imagenResId;  // ID del recurso de imagen
+    private double precio;
+    private int imagenResId;
     private boolean radioSeleccionado;
 
     // Constructor
-    public Motocicletas(String titulo, String contenido, int puntuacion, String direccionWeb, String telefono, int imagenResId, boolean radioSeleccionado) {
+    public Motocicletas(String titulo, String contenido, int puntuacion, String direccionWeb, double precio, int imagenResId, boolean radioSeleccionado) {
         this.titulo = titulo;
         this.contenido = contenido;
         this.puntuacion = puntuacion;
         this.direccionWeb = direccionWeb;
-        this.telefono = telefono;
+        this.precio = precio;
         this.imagenResId = imagenResId;
         this.radioSeleccionado = radioSeleccionado;
     }
@@ -25,8 +27,7 @@ public class Motocicletas {
     public String getContenido() { return contenido; }
     public int getPuntuacion() { return puntuacion; }
     public String getDireccionWeb() { return direccionWeb; }
-    public String getTelefono() { return telefono; }
-
+    public double getPrecio() { return precio; }
     public int getImagenResId() { return imagenResId; }
     public boolean isRadioSeleccionado() { return radioSeleccionado; }
     public void setRadioSeleccionado(boolean radioSeleccionado) { this.radioSeleccionado = radioSeleccionado; }

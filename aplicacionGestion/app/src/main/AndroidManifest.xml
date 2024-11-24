@@ -30,9 +30,9 @@
             android:name=".MainMotocicletas"
             android:exported="true" />
 
-        <!-- Definir la actividad WebView_act -->
+        <!-- Actividad para agregar una nueva motocicleta -->
         <activity
-            android:name=".WebView_act"
+            android:name=".AgregarMotocicleta"
             android:exported="true" />
 
     </application>

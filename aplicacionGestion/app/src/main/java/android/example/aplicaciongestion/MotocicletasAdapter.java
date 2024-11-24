@@ -40,15 +40,18 @@ public class MotocicletasAdapter extends ArrayAdapter<Motocicletas> {
         RatingBar ratingBar = view.findViewById(R.id.ratingElemento);
         RadioButton radio = view.findViewById(R.id.radioElemento);
         TextView direccionWeb = view.findViewById(R.id.direccionWebElemento);
-        TextView telefono = view.findViewById(R.id.telefonoElemento);
+        TextView precio = view.findViewById(R.id.precioElemento);
 
         // Asignar valores a las vistas desde el elemento actual
         titulo.setText(elemento.getTitulo());
         contenido.setText(elemento.getContenido());
         ratingBar.setRating(elemento.getPuntuacion());
         direccionWeb.setText(elemento.getDireccionWeb());
-        telefono.setText(elemento.getTelefono());
-        imagen.setImageResource(elemento.getImagenResId()); // Imagen desde recursos
+
+// Convertir el precio de double a String con 2 decimales y asignarlo al TextView
+        precio.setText(String.format("%.2f", elemento.getPrecio()));
+
+        imagen.setImageResource(elemento.getImagenResId());
 
         // Configurar el RadioButton para seleccionar un elemento
         radio.setChecked(elemento.isRadioSeleccionado());
