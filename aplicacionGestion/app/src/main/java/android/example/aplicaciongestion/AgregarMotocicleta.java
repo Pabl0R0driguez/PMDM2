@@ -48,7 +48,7 @@ public class AgregarMotocicleta extends AppCompatActivity {
             int puntuacion = (int) ratingBar.getRating();
 
             // Crear el objeto Motocicletas y añadirlo a la lista
-            Motocicletas nuevaMoto = new Motocicletas(titulo, contenido, puntuacion, direccionWeb, telefono, imagenResId, false);
+            Motocicletas nuevaMoto = new Motocicletas(titulo, contenido, puntuacion, direccionWeb, telefono, imagenResId);
 
             // Volver a la actividad principal y pasar la nueva moto
             Intent resultado = new Intent();

@@ -40,7 +40,6 @@ public class MotocicletasAdapter extends ArrayAdapter<Motocicletas> {
         TextView titulo = view.findViewById(R.id.tituloElemento);
         TextView contenido = view.findViewById(R.id.contenidoElemento);
         RatingBar ratingBar = view.findViewById(R.id.ratingElemento);
-        RadioButton radio = view.findViewById(R.id.radioElemento);
         TextView direccionWeb = view.findViewById(R.id.direccionWebElemento);
         TextView precio = view.findViewById(R.id.precioElemento);
 
@@ -55,13 +54,7 @@ public class MotocicletasAdapter extends ArrayAdapter<Motocicletas> {
 
         imagen.setImageResource(elemento.getImagenResId());
 
-        // Configurar el RadioButton para seleccionar un elemento
-        radio.setChecked(elemento.isRadioSeleccionado());
-        radio.setOnClickListener(v -> {
-            for (Motocicletas e : motocicletas) e.setRadioSeleccionado(false);
-            elemento.setRadioSeleccionado(true);
-            notifyDataSetChanged();
-        });
+
 
 
 

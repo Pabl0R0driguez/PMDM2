@@ -9,17 +9,15 @@ public class Motocicletas implements Serializable {
     private String direccionWeb;
     private double precio;
     private int imagenResId;
-    private boolean radioSeleccionado;
 
     // Constructor
-    public Motocicletas(String titulo, String contenido, int puntuacion, String direccionWeb, double precio, int imagenResId, boolean radioSeleccionado) {
+    public Motocicletas(String titulo, String contenido, int puntuacion, String direccionWeb, double precio, int imagenResId) {
         this.titulo = titulo;
         this.contenido = contenido;
         this.puntuacion = puntuacion;
         this.direccionWeb = direccionWeb;
         this.precio = precio;
         this.imagenResId = imagenResId;
-        this.radioSeleccionado = radioSeleccionado;
     }
 
     // Getters y setters
@@ -29,8 +27,6 @@ public class Motocicletas implements Serializable {
     public String getDireccionWeb() { return direccionWeb; }
     public double getPrecio() { return precio; }
     public int getImagenResId() { return imagenResId; }
-    public boolean isRadioSeleccionado() { return radioSeleccionado; }
-    public void setRadioSeleccionado(boolean radioSeleccionado) { this.radioSeleccionado = radioSeleccionado; }
 
     public void setContenido(String contenido) {
         this.contenido = contenido;

@@ -43,15 +43,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:backgroundTint="@android:color/white" />
 
-    <!-- Botón flotante para eliminar motocicleta -->
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab_delete"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:src="@drawable/cruz"
-        app:layout_constraintTop_toBottomOf="@id/fab_add"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:backgroundTint="@android:color/white" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -33,17 +33,17 @@ public class MainMotocicletas extends AppCompatActivity {
 
         // Configurar el Toolbar
         Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);  // Establece el toolbar como la ActionBar
+        setSupportActionBar(toolbar);
 
         // Inicializar ListView
         listaMotos = findViewById(R.id.listaMotocicletas);
 
         // Crear y cargar la lista de motocicletas
         listaMotocicletas = new ArrayList<>();
-        listaMotocicletas.add(new Motocicletas("Yamaha MT-07", "Moto de alta gama", 3, "https://honda.com/image.jpg", 2223, R.drawable.moto1, false));
-        listaMotocicletas.add(new Motocicletas("Kawasaki Ninja ZX-10R", "Moto deportiva", 5, "https://kawasaki.com/ninja-zx10r.jpg", 34566, R.drawable.moto2, false));
-        listaMotocicletas.add(new Motocicletas("Honda CBR 600RR", "Moto deportiva de alto rendimiento", 4, "https://honda.com/cbr600rr.jpg", 9000, R.drawable.moto3, false));
-        listaMotocicletas.add(new Motocicletas("Ducati Panigale V4", "Moto de alta gama", 5, "https://ducati.com/panigale-v4.jpg", 6777, R.drawable.moto4, false));
+        listaMotocicletas.add(new Motocicletas("Yamaha MT-07", "Moto de alta gama", 3, "https://honda.com/image.jpg", 2223, R.drawable.moto1));
+        listaMotocicletas.add(new Motocicletas("Kawasaki Ninja ZX-10R", "Moto deportiva", 5, "https://kawasaki.com/ninja-zx10r.jpg", 34566, R.drawable.moto2));
+        listaMotocicletas.add(new Motocicletas("Honda CBR 600RR", "Moto deportiva de alto rendimiento", 4, "https://honda.com/cbr600rr.jpg", 9000, R.drawable.moto3));
+        listaMotocicletas.add(new Motocicletas("Ducati Panigale V4", "Moto de alta gama", 5, "https://ducati.com/panigale-v4.jpg", 6777, R.drawable.moto4));
 
         // Configurar el adaptador para el ListView
         adaptador = new MotocicletasAdapter(this, listaMotocicletas);
@@ -56,30 +56,23 @@ public class MainMotocicletas extends AppCompatActivity {
             startActivityForResult(intent, 1); // 1 es el requestCode
         });
 
-        // Registrar el ListView para el menú contextual
-        listaMotos.setOnCreateContextMenuListener(this);  // Registrar para el menú contextual
+        // Configurar el long-click para eliminar elementos
+        listaMotos.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                // Obtener la motocicleta seleccionada
+                Motocicletas motoEliminada = listaMotocicletas.get(position);
 
+                // Eliminarla de la lista
+                listaMotocicletas.remove(position);
 
-        // Configurar el botón flotante de borrar
-        FloatingActionButton fabDelete = findViewById(R.id.fab_delete);
-        fabDelete.setOnClickListener(v -> {
-            boolean elementoEliminado = false;
+                // Notificar al adaptador que la lista ha cambiado
+                adaptador.notifyDataSetChanged();
 
-            // Buscar el elemento con radioSeleccionado = true
-            for (int i = 0; i < listaMotocicletas.size(); i++) {
-                if (listaMotocicletas.get(i).isRadioSeleccionado()) {
-                    listaMotocicletas.remove(i); // Eliminar el elemento
-                    elementoEliminado = true;
-                    adaptador.notifyDataSetChanged(); // Actualizar la vista
-                    break; // Salir del bucle una vez encontrado
-                }
-            }
+                // Mostrar un Toast confirmando la eliminación
+                Toast.makeText(MainMotocicletas.this, "Motocicleta eliminada: " + motoEliminada.getTitulo(), Toast.LENGTH_SHORT).show();
 
-            // Mostrar mensaje al usuario
-            if (elementoEliminado) {
-                Toast.makeText(MainMotocicletas.this, "Elemento eliminado", Toast.LENGTH_SHORT).show();
-            } else {
-                Toast.makeText(MainMotocicletas.this, "Ningún elemento seleccionado", Toast.LENGTH_SHORT).show();
+                return true; // Indica que el evento fue manejado
             }
         });
     }
@@ -102,54 +95,17 @@ public class MainMotocicletas extends AppCompatActivity {
             adaptador.notifyDataSetChanged();  // Actualizar la vista
             return true;
         }
-        return super.onOptionsItemSelected(item);
-    }
-
-
-    @Override
-    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
-        super.onCreateContextMenu(menu, v, menuInfo);
-        getMenuInflater().inflate(R.menu.menu_tools, menu);  // Inflar el menú contextual
-    }
-
-    @Override
-    public boolean onContextItemSelected(MenuItem item) {
-        AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
-
-        if (item.getItemId() == R.id.modificar) {
-            Motocicletas motoSeleccionada = listaMotocicletas.get(info.position);
-            Intent intent = new Intent(MainMotocicletas.this, ModificarMotocicleta.class);
-            intent.putExtra("motocicleta", motoSeleccionada);
-            startActivityForResult(intent, 2);  // 2 es el requestCode para "modificar"
+        if (item.getItemId() == R.id.filtrar_menos) {
+            Collections.sort(listaMotocicletas, new Comparator<Motocicletas>() {
+                @Override
+                public int compare(Motocicletas moto1, Motocicletas moto2) {
+                    return Double.compare(moto1.getPrecio(), moto2.getPrecio()); // Orden ascendente por precio
+                }
+            });
+            adaptador.notifyDataSetChanged();  // Actualizar la vista
             return true;
         }
-        return super.onContextItemSelected(item);
+
+        return super.onOptionsItemSelected(item);
     }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
-        if (resultCode == RESULT_OK) {
-            if (requestCode == 2) { // 2 es el código de la actividad de "modificar"
-                // Obtener la motocicleta modificada desde el intent
-                Motocicletas motocicletaModificada = (Motocicletas) data.getSerializableExtra("motocicleta_modificada");
-
-                // Actualizar el elemento en la lista
-                for (int i = 0; i < listaMotocicletas.size(); i++) {
-                    if (listaMotocicletas.get(i).getTitulo() == motocicletaModificada.getTitulo()) {
-                        listaMotocicletas.set(i, motocicletaModificada);  // Reemplazar el objeto en la lista
-                        break;
-                    }
-                }
-
-                // Notificar al adaptador que la lista ha cambiado
-                adaptador.notifyDataSetChanged();
-            }
-        }
-    }
-
 }
-
-
-

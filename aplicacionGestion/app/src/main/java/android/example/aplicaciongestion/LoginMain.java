@@ -2,10 +2,12 @@ package android.example.aplicaciongestion;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -33,7 +35,6 @@ public class LoginMain extends AppCompatActivity {
         listaUsuarios.add(new Usuario("usuario1", "clave1"));
         listaUsuarios.add(new Usuario("usuario2", "clave2"));
 
-        // Listener para el botón de iniciar sesión
         botonIniciarSesion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -46,19 +47,27 @@ public class LoginMain extends AppCompatActivity {
                     startActivity(intent);
                     finish();
                 } else {
-                    // Mostrar mensaje de error
-                    Toast.makeText(LoginMain.this, "Usuario o clave incorrectos", Toast.LENGTH_SHORT).show();
+                    LayoutInflater inflater = getLayoutInflater();
+                    View layout = inflater.inflate(R.layout.toast_personalizado, findViewById(R.id.customToastContainer));
+
+                    TextView text = layout.findViewById(R.id.toastText);
+                    text.setText("¡Introduce datos válidos!");
+
+                    Toast toast = new Toast(getApplicationContext());
+                    toast.setDuration(Toast.LENGTH_SHORT);
+                    toast.setView(layout);
+                    toast.show();
                 }
             }
-        });
-    }
 
-    private boolean validarUsuario(String nombre, String clave) {
-        for (Usuario usuario : listaUsuarios) {
-            if (usuario.getNombre().equals(nombre) && usuario.getClave().equals(clave)) {
-                return true;
+            private boolean validarUsuario(String nombre, String clave) {
+                for (Usuario usuario : listaUsuarios) {
+                    if (usuario.getNombre().equals(nombre) && usuario.getClave().equals(clave)) {
+                        return true;
+                    }
+                }
+                return false;
             }
-        }
-        return false;
+        }); // Cierre correcto
     }
 }

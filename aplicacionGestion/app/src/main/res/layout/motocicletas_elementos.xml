@@ -8,7 +8,7 @@
 
     <ImageView
         android:id="@+id/imagenElemento"
-        android:layout_width="100dp"
+        android:layout_width="150dp"
         android:layout_height="100dp"
         android:contentDescription="Imagen de la motocicleta"
         android:scaleType="centerCrop" />
@@ -33,14 +33,10 @@
         android:numStars="5"
         android:stepSize="1.0"
         android:progressTint="#3678FF"
-        android:layout_marginTop="16dp" />
+        android:layout_marginTop="16dp"
+        />
 
-    <RadioButton
-        android:id="@+id/radioElemento"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Seleccionar"
-        android:layout_marginTop="8dp" />
+
 
     <TextView
         android:id="@+id/direccionWebElemento"
@@ -57,10 +53,5 @@
         android:autoLink="phone"
         android:layout_marginTop="8dp" />
 
-    <Button
-        android:id="@+id/btnCargarUrl"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Cargar URL"
-        android:layout_marginTop="16dp"/>
+
 </LinearLayout>

@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:id="@+id/filtrar"
-        android:title="Filtrar">
-    </item>
+        android:title="Filtrar precio mayor"/>
 
-        <item
-            android:id="@+id/modificar"
-            android:title="Modificar" />
+    <item android:id="@+id/filtrar_menos"
+        android:title="Filtrar precio menor"/>
 
+    <item android:id="@+id/modificar"
+        android:title="Modificar" />
 
 </menu>
 
