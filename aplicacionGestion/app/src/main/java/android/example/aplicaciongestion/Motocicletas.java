@@ -6,16 +6,14 @@ public class Motocicletas implements Serializable {
     private String titulo;
     private String contenido;
     private int puntuacion;
-    private String direccionWeb;
     private double precio;
     private int imagenResId;
 
     // Constructor
-    public Motocicletas(String titulo, String contenido, int puntuacion, String direccionWeb, double precio, int imagenResId) {
+    public Motocicletas(String titulo,int puntuacion,  double precio, int imagenResId, String contenido) {
         this.titulo = titulo;
         this.contenido = contenido;
         this.puntuacion = puntuacion;
-        this.direccionWeb = direccionWeb;
         this.precio = precio;
         this.imagenResId = imagenResId;
     }
@@ -24,7 +22,6 @@ public class Motocicletas implements Serializable {
     public String getTitulo() { return titulo; }
     public String getContenido() { return contenido; }
     public int getPuntuacion() { return puntuacion; }
-    public String getDireccionWeb() { return direccionWeb; }
     public double getPrecio() { return precio; }
     public int getImagenResId() { return imagenResId; }
 
@@ -40,9 +37,6 @@ public class Motocicletas implements Serializable {
         this.puntuacion = puntuacion;
     }
 
-    public void setDireccionWeb(String direccionWeb) {
-        this.direccionWeb = direccionWeb;
-    }
 
     public void setPrecio(double precio) {
         this.precio = precio;

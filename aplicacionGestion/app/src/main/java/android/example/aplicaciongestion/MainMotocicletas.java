@@ -40,10 +40,8 @@ public class MainMotocicletas extends AppCompatActivity {
 
         // Crear y cargar la lista de motocicletas
         listaMotocicletas = new ArrayList<>();
-        listaMotocicletas.add(new Motocicletas("Yamaha MT-07", "Moto de alta gama", 3, "https://honda.com/image.jpg", 2223, R.drawable.moto1));
-        listaMotocicletas.add(new Motocicletas("Kawasaki Ninja ZX-10R", "Moto deportiva", 5, "https://kawasaki.com/ninja-zx10r.jpg", 34566, R.drawable.moto2));
-        listaMotocicletas.add(new Motocicletas("Honda CBR 600RR", "Moto deportiva de alto rendimiento", 4, "https://honda.com/cbr600rr.jpg", 9000, R.drawable.moto3));
-        listaMotocicletas.add(new Motocicletas("Ducati Panigale V4", "Moto de alta gama", 5, "https://ducati.com/panigale-v4.jpg", 6777, R.drawable.moto4));
+        listaMotocicletas.add(new Motocicletas("Yamaha MT-07", 2, 3,  R.drawable.moto1,"Yamaha"));
+        listaMotocicletas.add(new Motocicletas("Kawasaki Ninja ZX-10R", 5, 5,  R.drawable.moto2, "34566"));
 
         // Configurar el adaptador para el ListView
         adaptador = new MotocicletasAdapter(this, listaMotocicletas);
@@ -75,6 +73,15 @@ public class MainMotocicletas extends AppCompatActivity {
                 return true; // Indica que el evento fue manejado
             }
         });
+    }
+
+
+    public MotocicletasAdapter getAdaptador(){
+        return adaptador;
+    }
+
+    public List<Motocicletas> getListaMotocicletas(){
+        return  listaMotocicletas;
     }
 
     @Override

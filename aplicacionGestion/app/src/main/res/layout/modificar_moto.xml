@@ -26,7 +26,7 @@
         android:hint="Dirección Web" />
 
     <EditText
-        android:id="@+id/edtPrecio"
+        android:id="@+id/edtPrecio1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Teléfono" />

@@ -40,14 +40,12 @@ public class MotocicletasAdapter extends ArrayAdapter<Motocicletas> {
         TextView titulo = view.findViewById(R.id.tituloElemento);
         TextView contenido = view.findViewById(R.id.contenidoElemento);
         RatingBar ratingBar = view.findViewById(R.id.ratingElemento);
-        TextView direccionWeb = view.findViewById(R.id.direccionWebElemento);
         TextView precio = view.findViewById(R.id.precioElemento);
 
         // Asignar valores a las vistas desde el elemento actual
         titulo.setText(elemento.getTitulo());
         contenido.setText(elemento.getContenido());
         ratingBar.setRating(elemento.getPuntuacion());
-        direccionWeb.setText(elemento.getDireccionWeb());
 
 // Convertir el precio de double a String con 2 decimales y asignarlo al TextView
         precio.setText(String.format("%.2f", elemento.getPrecio()));

@@ -36,16 +36,6 @@
         android:layout_marginTop="16dp"
         />
 
-
-
-    <TextView
-        android:id="@+id/direccionWebElemento"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="#0000FF"
-        android:autoLink="web"
-        android:layout_marginTop="8dp" />
-
     <TextView
         android:id="@+id/precioElemento"
         android:layout_width="wrap_content"
