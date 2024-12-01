@@ -53,8 +53,6 @@ public class AgregarMotocicleta extends AppCompatActivity {
                 finish();
 
 
-                mainMotocicletas.getListaMotocicletas().add(nuevaMoto);
-                mainMotocicletas.getAdaptador().getView();
 
             });
     }

@@ -1,14 +1,14 @@
-<?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:id="@+id/filtrar"
-        android:title="Filtrar precio mayor"/>
-
-    <item android:id="@+id/filtrar_menos"
-        android:title="Filtrar precio menor"/>
-
-    <item android:id="@+id/modificar"
+    <item
+        android:id="@+id/eliminar"
+        android:title="Eliminar" />
+    <item
+        android:id="@+id/modificar"
         android:title="Modificar" />
-
+    <item
+        android:id="@+id/filtrar"
+        android:title="Filtrar por precio mayor" />
+    <item
+        android:id="@+id/filtrar_menos"
+        android:title="Filtrar por precio menor" />
 </menu>
-
-
