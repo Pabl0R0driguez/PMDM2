@@ -51,7 +51,7 @@ public class MainMotocicletas extends AppCompatActivity {
         listaMotocicletas.add(new Motocicletas("Ducati Panigale V4", 5, 5000, R.drawable.moto3,
                 "Superbike de alto rendimiento con motor V4 de 1103 cc y 214 caballos de fuerza."));
 
-        listaMotocicletas.add(new Motocicletas("BMW R 1250 GS", 4, 5500, R.drawable.moto4,
+        listaMotocicletas.add(new Motocicletas("BMW R 1250 GS", 4, 5500, R.drawable.moto7,
                 "Motocicleta de aventura con motor bóxer de 1254 cc, ideal para viajes largos y todo terreno."));
 
         listaMotocicletas.add(new Motocicletas("Honda CBR650R", 3, 4000, R.drawable.moto5,
@@ -114,7 +114,7 @@ public class MainMotocicletas extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflar el menú desde el XML
-        getMenuInflater().inflate(R.menu.menu_tools, menu);
+        getMenuInflater().inflate(R.menu.menu, menu);
         return true;
     }
 
@@ -168,33 +168,7 @@ public class MainMotocicletas extends AppCompatActivity {
             adaptador.notifyDataSetChanged();  // Actualizar la vista
             Toast.makeText(this, "Motocicleta eliminada", Toast.LENGTH_SHORT).show();
             return true;
-        } else if (item.getItemId() == R.id.modificar) {
-            // Llamar a la actividad de modificar la motocicleta seleccionada
-            Motocicletas motoSeleccionada = listaMotocicletas.get(position);
-            Intent intent = new Intent(MainMotocicletas.this, ModificarMotocicleta.class);
-            intent.putExtra("moto", motoSeleccionada);  // Pasar la motocicleta seleccionada
-            startActivityForResult(intent, 2);
-            return true;
-        } else if (item.getItemId() == R.id.filtrar) {
-            // Filtrar por precio mayor (orden descendente)
-            Collections.sort(listaMotocicletas, new Comparator<Motocicletas>() {
-                @Override
-                public int compare(Motocicletas moto1, Motocicletas moto2) {
-                    return Double.compare(moto2.getPrecio(), moto1.getPrecio());  // Orden descendente
-                }
-            });
-            adaptador.notifyDataSetChanged();  // Actualizar la vista
-            return true;
-        } else if (item.getItemId() == R.id.filtrar_menos) {
-            // Filtrar por precio menor (orden ascendente)
-            Collections.sort(listaMotocicletas, new Comparator<Motocicletas>() {
-                @Override
-                public int compare(Motocicletas moto1, Motocicletas moto2) {
-                    return Double.compare(moto1.getPrecio(), moto2.getPrecio());  // Orden ascendente
-                }
-            });
-            adaptador.notifyDataSetChanged();  // Actualizar la vista
-            return true;
+
         } else {
             return super.onContextItemSelected(item);
         }

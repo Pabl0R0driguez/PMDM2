@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <shape xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <!-- Color de fondo del botón -->
+    <solid android:color="#94FD98" />
+    <!-- Esquinas cuadradas -->
     <corners android:radius="0dp" />
 
 </shape>
+
