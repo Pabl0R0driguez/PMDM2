@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <!-- Opción Añadir -->
+    <item
+        android:id="@+id/action_add"
+        android:title="@string/cadena_barra_nuevo"
+        android:icon="@drawable/anadir"
+        app:showAsAction="always"
+       />
+
+    <!-- Opción Editar -->
+    <item
+        android:id="@+id/action_edit"
+        android:title="@string/cadena_barra_editar"
+        android:icon="@drawable/editar"
+        app:showAsAction="always"
+        />
+
+    <!-- Opción Configurar -->
+    <item
+        android:id="@+id/action_settings"
+        android:title="@string/cadena_barra_configurar"
+         />
+
+    <!-- Opción Ayuda -->
+    <item
+        android:id="@+id/action_help"
+        android:title="@string/cadena_barra_ayuda"
+        />
+
+    <!-- Opción Acerca de -->
+    <item
+        android:id="@+id/action_about"
+        android:title="@string/cadena_barra_acerca"
+        />
+</menu>
