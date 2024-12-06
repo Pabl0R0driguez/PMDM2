@@ -3,8 +3,10 @@ package android.example.aplicaciongestion;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.ContextMenu;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
@@ -97,6 +99,26 @@ public class MainMotocicletas extends AppCompatActivity {
 
         return true;
     }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Manejar las selecciones del menú usando if
+        if (item.getItemId() == R.id.buscar) {
+            // Aquí puedes manejar el SearchView si es necesario
+            return true;
+        } else if (item.getItemId() == R.id.filtrar) {
+            // Filtrar por precio mayor a menor
+            adaptador.ordenarPorPrecioMayorAMenor();
+            return true;
+        } else if (item.getItemId() == R.id.filtrar_menos) {
+            // Filtrar por precio menor a mayor
+            adaptador.ordenarPorPrecioMenorAMayor();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);  // Si no es ninguna opción válida, llamamos al método del super
+    }
+
+
 
     // Método para filtrar las motocicletas
     private void filtrarMotocicletas(String query) {

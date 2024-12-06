@@ -3,8 +3,11 @@ package android.example.aplicaciongestion;
 import android.app.DatePickerDialog;
 import android.content.Context;
 import android.view.LayoutInflater;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -21,12 +24,14 @@ public class MotocicletasAdapter extends ArrayAdapter<Motocicletas> {
     private Context context;
     private List<Motocicletas> motocicletasOriginales;  // Lista original
     private List<Motocicletas> motocicletasFiltradas;  // Lista filtrada
+    private List<Motocicletas> motocicletas;  // Lista
 
     public MotocicletasAdapter(Context context, List<Motocicletas> motocicletas) {
         super(context, R.layout.motocicletas_elementos, motocicletas);
         this.context = context;
         this.motocicletasOriginales = new ArrayList<>(motocicletas);  // Copiar la lista original
         this.motocicletasFiltradas = new ArrayList<>(motocicletas);  // Inicializar la lista filtrada
+        this.motocicletas = new ArrayList<>(motocicletas);
     }
 
     @Override
@@ -77,8 +82,43 @@ public class MotocicletasAdapter extends ArrayAdapter<Motocicletas> {
             datePickerDialog.show();
         });
 
+
+
+        // Registrar el menú contextual para el elemento actual
+        view.setOnCreateContextMenuListener((menu, v, menuInfo) -> {
+            MenuInflater inflater = ((MainMotocicletas) context).getMenuInflater();
+            inflater.inflate(R.menu.menu_contextual, menu); // Inflar el menú contextual desde el XML
+
+            menu.findItem(R.id.eliminar).setOnMenuItemClickListener(item -> {
+                // Eliminar la motocicleta actual
+                motocicletasFiltradas.remove(position);
+                notifyDataSetChanged();
+                Toast.makeText(context, "Motocicleta eliminada", Toast.LENGTH_SHORT).show();
+                return true;
+            });
+
+        });
+
+
+
         return view;
     }
+
+
+    // Método para eliminar un ítem
+    public void removeItem(int position) {
+        Motocicletas motocicletaAEliminar = motocicletasFiltradas.get(position); // Obtener el ítem a eliminar
+
+        // Eliminar de la lista filtrada
+        motocicletasFiltradas.remove(position);
+
+        // Eliminar también de la lista original (para que se mantenga sincronizada)
+        motocicletas.remove(motocicletaAEliminar);
+
+        notifyDataSetChanged(); // Notificar al adaptador que la vista ha cambiado
+    }
+
+
 
     // Método para filtrar las motocicletas por nombre
     public void filtrar(String query) {
@@ -100,4 +140,20 @@ public class MotocicletasAdapter extends ArrayAdapter<Motocicletas> {
         addAll(motocicletasFiltradas); // Añadir los datos filtrados
         notifyDataSetChanged();  // Notificar al adaptador
     }
+
+
+    // Método para ordenar las motocicletas por precio de mayor a menor
+    public void ordenarPorPrecioMayorAMenor() {
+        motocicletasFiltradas.sort((m1, m2) -> Double.compare(m2.getPrecio(), m1.getPrecio()));  // Ordenar de mayor a menor
+        notifyDataSetChanged();  // Notificar al adaptador para actualizar la vista
+    }
+
+    // Método para ordenar las motocicletas por precio de menor a mayor
+    public void ordenarPorPrecioMenorAMayor() {
+        motocicletasFiltradas.sort((m1, m2) -> Double.compare(m1.getPrecio(), m2.getPrecio()));  // Ordenar de menor a mayor
+        notifyDataSetChanged();  // Notificar al adaptador para actualizar la vista
+    }
+
+
+
 }
