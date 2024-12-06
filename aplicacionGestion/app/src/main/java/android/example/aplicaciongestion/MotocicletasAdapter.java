@@ -3,7 +3,6 @@ package android.example.aplicaciongestion;
 import android.app.DatePickerDialog;
 import android.content.Context;
 import android.view.LayoutInflater;
-import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
@@ -13,18 +12,21 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
 public class MotocicletasAdapter extends ArrayAdapter<Motocicletas> {
 
-    private Context context; // Contexto de la aplicación o actividad
-    private List<Motocicletas> motocicletas; // Lista de objetos Motocicletas
+    private Context context;
+    private List<Motocicletas> motocicletasOriginales;  // Lista original
+    private List<Motocicletas> motocicletasFiltradas;  // Lista filtrada
 
     public MotocicletasAdapter(Context context, List<Motocicletas> motocicletas) {
         super(context, R.layout.motocicletas_elementos, motocicletas);
         this.context = context;
-        this.motocicletas = motocicletas;
+        this.motocicletasOriginales = new ArrayList<>(motocicletas);  // Copiar la lista original
+        this.motocicletasFiltradas = new ArrayList<>(motocicletas);  // Inicializar la lista filtrada
     }
 
     @Override
@@ -36,8 +38,8 @@ public class MotocicletasAdapter extends ArrayAdapter<Motocicletas> {
             view = inflater.inflate(R.layout.motocicletas_elementos, parent, false);
         }
 
-        // Obtener la motocicleta actual
-        Motocicletas motocicleta = motocicletas.get(position);
+        // Obtener la motocicleta actual desde la lista filtrada
+        Motocicletas motocicleta = motocicletasFiltradas.get(position);
 
         // Vincular las vistas
         ImageView imagen = view.findViewById(R.id.imagenElemento);
@@ -75,21 +77,27 @@ public class MotocicletasAdapter extends ArrayAdapter<Motocicletas> {
             datePickerDialog.show();
         });
 
-        // Registrar el menú contextual para el elemento actual
-        view.setOnCreateContextMenuListener((menu, v, menuInfo) -> {
-            MenuInflater inflater = ((MainMotocicletas) context).getMenuInflater();
-            inflater.inflate(R.menu.menu_contextual, menu); // Inflar el menú contextual desde el XML
-
-            menu.findItem(R.id.eliminar).setOnMenuItemClickListener(item -> {
-                // Eliminar la motocicleta actual
-                motocicletas.remove(position);
-                notifyDataSetChanged();
-                Toast.makeText(context, "Motocicleta eliminada", Toast.LENGTH_SHORT).show();
-                return true;
-            });
-
-        });
-
         return view;
+    }
+
+    // Método para filtrar las motocicletas por nombre
+    public void filtrar(String query) {
+        if (query.isEmpty()) {
+            // Si el query está vacío, mostrar todas las motocicletas
+            motocicletasFiltradas = new ArrayList<>(motocicletasOriginales);
+        } else {
+            List<Motocicletas> listaFiltrada = new ArrayList<>();
+            for (Motocicletas moto : motocicletasOriginales) {
+                if (moto.getTitulo().toLowerCase().contains(query.toLowerCase())) {
+                    listaFiltrada.add(moto);
+                }
+            }
+            motocicletasFiltradas = listaFiltrada;  // Asignar la lista filtrada
+        }
+
+        // Actualizar la lista del adaptador y notificar el cambio
+        clear(); // Limpiar los datos actuales
+        addAll(motocicletasFiltradas); // Añadir los datos filtrados
+        notifyDataSetChanged();  // Notificar al adaptador
     }
 }

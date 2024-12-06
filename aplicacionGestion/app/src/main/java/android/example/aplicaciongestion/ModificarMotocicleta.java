@@ -24,7 +24,6 @@ public class ModificarMotocicleta extends AppCompatActivity {
         // Inicializar los campos de la UI
         edtTitulo = findViewById(R.id.edtTitulo);
         edtDescripcion = findViewById(R.id.edtContenido);
-        edtPrecio = findViewById(R.id.edtPrecio);
         imgMotocicleta = findViewById(R.id.imagenSeleccionada);
 
         // Obtener la motocicleta enviada desde la actividad anterior

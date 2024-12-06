@@ -47,6 +47,7 @@
         android:layout_gravity="center" />
 
 
+
     <RatingBar
         android:id="@+id/ratingElemento"
         android:layout_width="wrap_content"
@@ -55,7 +56,9 @@
         android:stepSize="1.0"
         android:progressTint="#3678FF"
         android:layout_marginTop="16dp"
-        android:layout_gravity="center" />
+        android:layout_gravity="center"
+        android:rating="3.0"
+        android:isIndicator="false" />
 
 
     <Button

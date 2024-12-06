@@ -19,7 +19,18 @@
         android:titleTextColor="@android:color/white"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <!-- SearchView dentro de la Toolbar -->
+        <androidx.appcompat.widget.SearchView
+            android:id="@+id/search_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:queryHint="Buscar por nombre"
+            android:iconifiedByDefault="false"
+            app:iconifiedByDefault="true" />
+
+    </androidx.appcompat.widget.Toolbar>
 
     <!-- ListView -->
     <ListView
@@ -43,7 +54,5 @@
         app:layout_constraintTop_toBottomOf="@id/toolbar"
         app:layout_constraintEnd_toEndOf="parent"
         app:backgroundTint="@android:color/white" />
-
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
