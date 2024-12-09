@@ -5,26 +5,45 @@
     android:padding="16dp"
     android:gravity="center"
     android:scrollbars="vertical"
-    android:background="#ADD8E6"> <!-- Azul clarito -->
+    android:background="#ADD8E6">
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="MODIFICAR MOTO"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="#000000"
+        android:gravity="center"
+        android:layout_marginBottom="20dp" />
 
     <EditText
         android:id="@+id/edtTitulo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Título de la Moto" />
+        android:hint="Título de la Moto"
+        android:background="@color/white"
+        android:padding="10dp"
+        android:layout_marginBottom="16dp" />
 
     <EditText
         android:id="@+id/edtContenido"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Contenido/Descripción" />
-
+        android:hint="Contenido/Descripción"
+        android:background="@color/white"
+        android:padding="10dp"
+        android:layout_marginBottom="16dp" />
 
     <EditText
         android:id="@+id/edtPrecio"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Precio" />
+        android:hint="Precio"
+        android:background="@color/white"
+        android:padding="10dp"
+        android:layout_marginBottom="16dp" />
 
     <RatingBar
         android:id="@+id/ratingBar"
@@ -33,27 +52,23 @@
         android:numStars="5"
         android:stepSize="1.0"
         android:progressTint="#3678FF"
-        android:layout_marginTop="16dp"
-        />
-
-
+        android:layout_marginTop="16dp" />
 
     <ImageView
         android:id="@+id/imagenSeleccionada"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="222dp"
+        android:layout_height="182dp"
+        android:contentDescription="Imagen Moto"
         android:src="@drawable/moto1"
-        android:contentDescription="Imagen Moto" />
+        android:layout_marginTop="20dp" />
 
     <Button
         android:id="@+id/btnGuardar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Guardar Moto" />
+        android:text="Guardar Moto"
+        android:textColor="#FFFFFF"
+        android:background="@color/white"
+        android:layout_marginTop="20dp" />
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="match_parent"
-        android:layout_height="54dp"
-        android:text="TextView" />
 </LinearLayout>

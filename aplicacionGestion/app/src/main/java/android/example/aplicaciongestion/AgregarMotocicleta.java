@@ -2,63 +2,60 @@ package android.example.aplicaciongestion;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RatingBar;
-
+import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class AgregarMotocicleta extends AppCompatActivity {
 
-    private EditText edtTitulo, edtContenido, edtPrecio;
+    private EditText editTitulo, editContenido, editPrecio;
     private RatingBar ratingBar;
-    private ImageView imagenSeleccionada;
+    private ImageView imagenMoto;
     private Button btnGuardar;
-    private int imagenResId = R.drawable.moto1; // Imagen por defecto
-    MainMotocicletas mainMotocicletas;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.nueva_moto);
 
-        // Inicializar campos de texto y botones
-        edtTitulo = findViewById(R.id.edtTitulo);
-        edtContenido = findViewById(R.id.edtContenido);
-        edtPrecio = findViewById(R.id.edtPrecio);
+        // Vincular vistas
+        editTitulo = findViewById(R.id.edtTitulo);
+        editContenido = findViewById(R.id.edtContenido);
+        editPrecio = findViewById(R.id.edtPrecio);
         ratingBar = findViewById(R.id.ratingBar);
-        imagenSeleccionada = findViewById(R.id.imagenSeleccionada);
+        imagenMoto = findViewById(R.id.imagenSeleccionada);
         btnGuardar = findViewById(R.id.btnGuardar);
 
-
-        // Configurar el botón para guardar la nueva motocicleta
+        // Configurar el botón Guardar
         btnGuardar.setOnClickListener(v -> {
-///On click
-                // Obtener los valores de los campos
-                String titulo = edtTitulo.getText().toString();
-                String contenido = edtContenido.getText().toString();
-                int puntuacion = (int) ratingBar.getRating();
-                double precio = Double.parseDouble(edtPrecio.getText().toString());
-                int imagen =(imagenSeleccionada.getImageAlpha());
+            // Obtener los datos de la nueva motocicleta
+            String titulo = editTitulo.getText().toString();
+            String contenido = editContenido.getText().toString();
+            String precioStr = editPrecio.getText().toString();
 
+            // Validar que el campo de precio no esté vacío
+            if (precioStr.isEmpty()) {
+                Toast.makeText(AgregarMotocicleta.this, "El precio es obligatorio", Toast.LENGTH_SHORT).show();
+                return;  // Salir si el precio es inválido
+            }
+            float precio = Float.parseFloat(precioStr);
+            float puntuacion = ratingBar.getRating();
 
-                // Crear el objeto Motocicletas
-                Motocicletas nuevaMoto = new Motocicletas(titulo, imagen, precio, puntuacion, contenido);
+            // Establecer una imagen por defecto (puedes hacer esto dinámico)
+            int imagenResId = R.drawable.moto3;
 
-                // Volver a la actividad principal y pasar la nueva moto
-                Intent resultado = new Intent();
-                resultado.putExtra("nuevaMotocicleta", nuevaMoto); // Asegúrate de que Motocicletas implementa Parcelable
-                setResult(RESULT_OK, resultado);
-                finish();
+            // Crear una nueva motocicleta
+            Motocicletas nuevaMoto = new Motocicletas(titulo, (int) puntuacion, precio, imagenResId, contenido);
 
-
-
-            });
+            // Devolver la motocicleta a la actividad principal
+            Intent intent = new Intent();
+            intent.putExtra("nuevaMoto", nuevaMoto);
+            setResult(RESULT_OK, intent);
+            finish();
+        });
     }
-
-
-
-    }
-
-
+}
