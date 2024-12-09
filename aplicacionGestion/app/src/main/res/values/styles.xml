@@ -1,0 +1,19 @@
+<resources>
+
+    <!-- Tema básico para la aplicación -->
+    <style name="AppTheme" parent="Theme.AppCompat.NoActionBar">
+        <!-- Definir colores -->
+        <item name="colorPrimary">#6200EE</item> <!-- Color principal -->
+        <item name="colorPrimaryDark">#3700B3</item> <!-- Color oscuro del principal -->
+        <item name="colorAccent">#03DAC5</item> <!-- Color de acento -->
+
+        <!-- Estilos de texto -->
+        <item name="android:textColorPrimary">@color/black</item> <!-- Color de texto principal -->
+        <item name="android:textColorSecondary">@color/black</item> <!-- Color de texto secundario -->
+        <item name="android:textColorHint">#E8000000</item> <!-- El color gris se definirá en colors.xml -->
+
+    </style>
+
+
+
+</resources>

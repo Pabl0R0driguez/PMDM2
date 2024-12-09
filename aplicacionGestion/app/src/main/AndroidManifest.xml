@@ -18,7 +18,10 @@
         <!-- Actividad principal que es la primera que se lanza (Login) -->
         <activity
             android:name=".LoginMain"
-            android:exported="true">
+            android:exported="true"
+            android:theme="@style/AppTheme"
+
+            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -28,19 +31,23 @@
         <!-- Actividad para mostrar la lista de motocicletas -->
         <activity
             android:name=".MainMotocicletas"
-            android:exported="true" />
+            android:exported="true"
+        />
 
         <!-- Actividad para agregar una nueva motocicleta -->
         <activity
             android:name=".AgregarMotocicleta"
-            android:exported="true" />
+            android:exported="true"
+            />
 
         <!-- Actividad para agregar una nueva motocicleta -->
         <activity
             android:name=".ModificarMotocicleta"
-            android:exported="true" />
+            android:exported="true"
+        />
 
 
     </application>
 
-</manifest>
+
+    </manifest>
