@@ -6,7 +6,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.RatingBar;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -24,6 +23,7 @@ public class ModificarMotocicleta extends AppCompatActivity {
         // Inicializar los campos de la UI
         edtTitulo = findViewById(R.id.edtTitulo);
         edtDescripcion = findViewById(R.id.edtContenido);
+        edtPrecio = findViewById(R.id.edtPrecio); // Agregar referencia al campo de precio
         imgMotocicleta = findViewById(R.id.imagenSeleccionada);
 
         // Obtener la motocicleta enviada desde la actividad anterior
@@ -44,6 +44,12 @@ public class ModificarMotocicleta extends AppCompatActivity {
             moto.setContenido(edtDescripcion.getText().toString());
             moto.setPrecio(Double.parseDouble(edtPrecio.getText().toString()));
 
+            // Pasar la motocicleta modificada y la posición de vuelta
+            Intent resultIntent = new Intent();
+            resultIntent.putExtra("motocicletaModificada", moto);
+            resultIntent.putExtra("position", getIntent().getIntExtra("position", -1));
+            setResult(RESULT_OK, resultIntent);
+            finish(); // Cerrar la actividad
         });
     }
 }

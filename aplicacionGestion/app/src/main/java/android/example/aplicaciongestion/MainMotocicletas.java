@@ -23,6 +23,8 @@ public class MainMotocicletas extends AppCompatActivity {
     private MotocicletasAdapter adaptador; // Adaptador personalizado
     private List<Motocicletas> listaMotocicletas; // Lista de motocicletas
     private static final int REQUEST_CODE_AGREGAR_MOTO = 1; // Código de solicitud para agregar moto
+    static final int REQUEST_CODE_MODIFICAR_MOTO = 1; // Código de solicitud para agregar moto
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -139,6 +141,22 @@ public class MainMotocicletas extends AppCompatActivity {
                 Toast.makeText(this, "Nueva motocicleta añadida", Toast.LENGTH_SHORT).show();
             } else {
                 Toast.makeText(this, "Error al agregar motocicleta", Toast.LENGTH_SHORT).show();
+            }
+        }
+
+        // Nueva parte para modificar la motocicleta
+        if (requestCode == REQUEST_CODE_MODIFICAR_MOTO && resultCode == RESULT_OK && data != null) {
+            Motocicletas motoModificada = (Motocicletas) data.getSerializableExtra("motocicletaModificada");
+            if (motoModificada != null) {
+                // Obtener la posición de la motocicleta modificada desde el adaptador
+                int position = data.getIntExtra("position", -1);
+                if (position != -1) {
+                    // Actualizar la motocicleta en la lista y notificar al adaptador
+                    adaptador.updateItem(position, motoModificada);
+                    Toast.makeText(this, "Motocicleta modificada", Toast.LENGTH_SHORT).show();
+                }
+            } else {
+                Toast.makeText(this, "Error al modificar motocicleta", Toast.LENGTH_SHORT).show();
             }
         }
     }

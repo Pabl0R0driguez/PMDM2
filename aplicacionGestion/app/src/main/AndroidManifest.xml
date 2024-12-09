@@ -35,6 +35,12 @@
             android:name=".AgregarMotocicleta"
             android:exported="true" />
 
+        <!-- Actividad para agregar una nueva motocicleta -->
+        <activity
+            android:name=".ModificarMotocicleta"
+            android:exported="true" />
+
+
     </application>
 
 </manifest>

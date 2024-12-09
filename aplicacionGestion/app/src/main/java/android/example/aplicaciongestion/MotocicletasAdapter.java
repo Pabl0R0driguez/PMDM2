@@ -2,6 +2,7 @@ package android.example.aplicaciongestion;
 
 import android.app.DatePickerDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuInflater;
@@ -93,6 +94,15 @@ public class MotocicletasAdapter extends ArrayAdapter<Motocicletas> {
                 Toast.makeText(context, "Motocicleta eliminada", Toast.LENGTH_SHORT).show();
                 return true;
             });
+
+            // Modificar la motocicleta
+            menu.findItem(R.id.modificar).setOnMenuItemClickListener(item -> {
+                Intent intent = new Intent(context, ModificarMotocicleta.class);
+                intent.putExtra("motocicleta", motocicleta); // Pasar la motocicleta a la actividad de modificación
+                intent.putExtra("position", position); // Pasar la posición para actualizarla después
+                ((MainMotocicletas) context).startActivityForResult(intent, MainMotocicletas.REQUEST_CODE_MODIFICAR_MOTO);
+                return true;
+            });
         });
 
         return view;
@@ -163,5 +173,14 @@ public class MotocicletasAdapter extends ArrayAdapter<Motocicletas> {
     public Motocicletas getItem(int position) {
         return motocicletasFiltradas.get(position);
     }
-}
 
+    // Método para actualizar una motocicleta en la lista
+    public void updateItem(int position, Motocicletas motocicletaModificada) {
+        if (position >= 0 && position < motocicletasFiltradas.size()) {
+            motocicletasFiltradas.set(position, motocicletaModificada); // Actualizar en la lista filtrada
+            motocicletas.set(position, motocicletaModificada); // Actualizar en la lista principal
+            motocicletasOriginales.set(position, motocicletaModificada); // También actualizar en la lista original
+            notifyDataSetChanged(); // Notificar al adaptador para refrescar la vista
+        }
+    }
+}
