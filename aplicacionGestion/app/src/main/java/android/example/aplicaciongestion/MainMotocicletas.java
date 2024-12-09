@@ -55,19 +55,19 @@ public class MainMotocicletas extends AppCompatActivity {
         });
     }
 
-    // Cargar motocicletas iniciales
     private void cargarMotocicletas() {
         listaMotocicletas.add(new Motocicletas("Ducati Panigale V4", 5, 5000, R.drawable.moto3,
-                "Superbike de alto rendimiento con motor V4 de 1103 cc y 214 caballos de fuerza."));
+                "Superbike de alto rendimiento con motor V4 de 1103 cc y 214 caballos de fuerza.", "01/01/2024"));
         listaMotocicletas.add(new Motocicletas("BMW R 1250 GS", 4, 5500, R.drawable.moto7,
-                "Motocicleta de aventura con motor bóxer de 1254 cc, ideal para viajes largos y todo terreno."));
+                "Motocicleta de aventura con motor bóxer de 1254 cc, ideal para viajes largos y todo terreno.", "02/01/2024"));
         listaMotocicletas.add(new Motocicletas("Honda CBR650R", 3, 4000, R.drawable.moto5,
-                "Moto deportiva de 649 cc, perfecta para quienes buscan agilidad y rendimiento en carretera."));
+                "Moto deportiva de 649 cc, perfecta para quienes buscan agilidad y rendimiento en carretera.", "03/01/2024"));
         listaMotocicletas.add(new Motocicletas("Suzuki Hayabusa", 5, 6500, R.drawable.moto1,
-                "Motocicleta deportiva de 1340 cc, famosa por su velocidad y rendimiento en pista."));
+                "Motocicleta deportiva de 1340 cc, famosa por su velocidad y rendimiento en pista.", "04/01/2024"));
         listaMotocicletas.add(new Motocicletas("KTM 390 Duke", 3, 3000, R.drawable.moto2,
-                "Moto naked de 373 cc, ligera y ágil, ideal para principiantes y la ciudad."));
+                "Moto naked de 373 cc, ligera y ágil, ideal para principiantes y la ciudad.", "05/01/2024"));
     }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -139,8 +139,7 @@ public class MainMotocicletas extends AppCompatActivity {
             if (nuevaMoto != null) {
                 adaptador.addItem(nuevaMoto);
                 Toast.makeText(this, "Nueva motocicleta añadida", Toast.LENGTH_SHORT).show();
-            } else {
-                Toast.makeText(this, "Error al agregar motocicleta", Toast.LENGTH_SHORT).show();
+
             }
         }
 
@@ -155,8 +154,6 @@ public class MainMotocicletas extends AppCompatActivity {
                     adaptador.updateItem(position, motoModificada);
                     Toast.makeText(this, "Motocicleta modificada", Toast.LENGTH_SHORT).show();
                 }
-            } else {
-                Toast.makeText(this, "Error al modificar motocicleta", Toast.LENGTH_SHORT).show();
             }
         }
     }

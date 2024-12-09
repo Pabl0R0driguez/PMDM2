@@ -8,14 +8,16 @@ public class Motocicletas implements Serializable {
     private int puntuacion;
     private double precio;
     private int imagenResId;
+    private String fecha;
 
     // Constructor
-    public Motocicletas(String titulo,int puntuacion,  double precio, int imagenResId, String contenido) {
+    public Motocicletas(String titulo,int puntuacion,  double precio, int imagenResId, String contenido, String fecha) {
         this.titulo = titulo;
         this.contenido = contenido;
         this.puntuacion = puntuacion;
         this.precio = precio;
         this.imagenResId = imagenResId;
+        this.fecha = fecha;
     }
 
     // Getters y setters
@@ -44,5 +46,13 @@ public class Motocicletas implements Serializable {
 
     public void setImagenResId(int imagenResId) {
         this.imagenResId = imagenResId;
+    }
+
+    public String getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(String fecha) {
+        this.fecha = fecha;
     }
 }

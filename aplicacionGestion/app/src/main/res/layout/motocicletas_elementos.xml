@@ -58,18 +58,9 @@
         android:layout_marginTop="16dp"
         android:layout_gravity="center"
         android:rating="3.0"
-        android:isIndicator="false"
+        android:isIndicator="true"
         />
 
-
-    <Button
-        android:id="@+id/botonFecha"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Seleccionar Fecha"
-        android:backgroundTint="#4C9CD9"
-        android:textColor="#BF000000"
-        android:layout_gravity="center" />
 
     <TextView
         android:id="@+id/textViewFecha"

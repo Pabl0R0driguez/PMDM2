@@ -1,6 +1,5 @@
 package android.example.aplicaciongestion;
 
-import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
@@ -10,14 +9,12 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
 
 public class MotocicletasAdapter extends ArrayAdapter<Motocicletas> {
@@ -54,7 +51,6 @@ public class MotocicletasAdapter extends ArrayAdapter<Motocicletas> {
         RatingBar ratingBar = view.findViewById(R.id.ratingElemento);
         TextView precio = view.findViewById(R.id.precioElemento);
         TextView textViewFecha = view.findViewById(R.id.textViewFecha);
-        Button btnDatePicker = view.findViewById(R.id.botonFecha);
 
         // Configurar las vistas con los datos de la motocicleta
         imagen.setImageResource(motocicleta.getImagenResId());
@@ -62,31 +58,12 @@ public class MotocicletasAdapter extends ArrayAdapter<Motocicletas> {
         contenido.setText(motocicleta.getContenido());
         ratingBar.setRating(motocicleta.getPuntuacion());
         precio.setText(String.format("%.2f €", motocicleta.getPrecio()));
-
-        // Configuración del botón para seleccionar fecha
-        btnDatePicker.setOnClickListener(v -> {
-            // Obtener la fecha actual
-            Calendar calendar = Calendar.getInstance();
-            int year = calendar.get(Calendar.YEAR);
-            int month = calendar.get(Calendar.MONTH);
-            int day = calendar.get(Calendar.DAY_OF_MONTH);
-
-            // Mostrar el DatePickerDialog
-            DatePickerDialog datePickerDialog = new DatePickerDialog(
-                    context,
-                    (view1, selectedYear, selectedMonth, selectedDay) -> {
-                        String fechaSeleccionada = selectedDay + "/" + (selectedMonth + 1) + "/" + selectedYear;
-                        textViewFecha.setText("Fecha: " + fechaSeleccionada);
-                    },
-                    year, month, day
-            );
-            datePickerDialog.show();
-        });
+        textViewFecha.setText("Fecha: " + motocicleta.getFecha());  // Asumimos que la motocicleta tiene una fecha
 
         // Registrar el menú contextual para el elemento actual
         view.setOnCreateContextMenuListener((menu, v, menuInfo) -> {
-            MenuInflater inflater = ((MainMotocicletas) context).getMenuInflater();
-            inflater.inflate(R.menu.menu_contextual, menu); // Inflar el menú contextual desde el XML
+            MenuInflater inflaterMenu = ((MainMotocicletas) context).getMenuInflater();
+            inflaterMenu.inflate(R.menu.menu_contextual, menu); // Inflar el menú contextual desde el XML
 
             menu.findItem(R.id.eliminar).setOnMenuItemClickListener(item -> {
                 // Eliminar la motocicleta actual

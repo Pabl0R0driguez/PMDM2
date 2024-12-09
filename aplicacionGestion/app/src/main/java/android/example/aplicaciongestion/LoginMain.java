@@ -6,10 +6,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
@@ -47,16 +47,8 @@ public class LoginMain extends AppCompatActivity {
                     startActivity(intent);
                     finish();
                 } else {
-                    LayoutInflater inflater = getLayoutInflater();
-                    View layout = inflater.inflate(R.layout.toast_personalizado, findViewById(R.id.customToastContainer));
-
-                    TextView text = layout.findViewById(R.id.toastText);
-                    text.setText("¡Introduce datos válidos!");
-
-                    Toast toast = new Toast(getApplicationContext());
-                    toast.setDuration(Toast.LENGTH_SHORT);
-                    toast.setView(layout);
-                    toast.show();
+                    // Mostrar el Dialog de alerta de fallo de inicio de sesión
+                    mostrarDialogoError();
                 }
             }
 
@@ -68,6 +60,15 @@ public class LoginMain extends AppCompatActivity {
                 }
                 return false;
             }
-        }); // Cierre correcto
+
+            private void mostrarDialogoError() {
+                // Crear y configurar el AlertDialog
+                new AlertDialog.Builder(LoginMain.this)
+                        .setTitle("Error de inicio de sesión")
+                        .setMessage("¡Introduce datos válidos!")
+                        .setPositiveButton("Aceptar", null)  // Simplemente cierra el diálogo
+                        .show();
+            }
+        });
     }
 }

@@ -8,12 +8,7 @@
         app:showAsAction="ifRoom|collapseActionView"
         app:actionViewClass="androidx.appcompat.widget.SearchView" />
 
-    <item
-        android:id="@+id/idiomas"
-        android:title="Inglés"
-        android:icon="@drawable/idioma"
-        app:showAsAction="ifRoom|collapseActionView"
-        />
+
     <item
         android:id="@+id/filtrar"
         android:title="Filtrar por precio mayor" />
