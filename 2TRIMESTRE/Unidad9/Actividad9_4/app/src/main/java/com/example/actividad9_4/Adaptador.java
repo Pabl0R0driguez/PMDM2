@@ -1,6 +1,6 @@
 package com.example.actividad9_4;
-import java.util.ArrayList;
 
+import java.util.ArrayList;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -46,5 +46,4 @@ public abstract class Adaptador extends BaseAdapter {
     }
 
     public abstract void onEntrada (Object entrada, View view);
-
 }
