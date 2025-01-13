@@ -1,45 +1,50 @@
 package com.example.actividad9_4;
+import java.util.ArrayList;
 
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.TextView;
 
-import java.util.List;
+public abstract class Adaptador extends BaseAdapter {
 
-public class Adaptador extends BaseAdapter {
-    private Context context;
-    private List<String> datos;
+    private ArrayList<?> entradas;
+    private int R_layout_IdView;
+    private Context contexto;
 
-    public Adaptador(Context context, List<String> datos) {
-        this.context = context;
-        this.datos = datos;
+    public Adaptador(Context contexto, int R_layout_IdView, ArrayList<?> entradas) {
+        super();
+        this.contexto = contexto;
+        this.entradas = entradas;
+        this.R_layout_IdView = R_layout_IdView;
+    }
+
+    @Override
+    public View getView(int posicion, View view, ViewGroup pariente) {
+        if (view == null) {
+            LayoutInflater vi = (LayoutInflater) contexto.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            view = vi.inflate(R_layout_IdView, null);
+        }
+        onEntrada (entradas.get(posicion), view);
+        return view;
     }
 
     @Override
     public int getCount() {
-        return datos.size();
+        return entradas.size();
     }
 
     @Override
-    public Object getItem(int position) {
-        return datos.get(position);
+    public Object getItem(int posicion) {
+        return entradas.get(posicion);
     }
 
     @Override
-    public long getItemId(int position) {
-        return position;
+    public long getItemId(int posicion) {
+        return posicion;
     }
 
-    @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
-        if (convertView == null) {
-            convertView = LayoutInflater.from(context).inflate(android.R.layout.simple_list_item_1, parent, false);
-        }
-        TextView textView = convertView.findViewById(android.R.id.text1);
-        textView.setText(datos.get(position));
-        return convertView;
-    }
+    public abstract void onEntrada (Object entrada, View view);
+
 }
