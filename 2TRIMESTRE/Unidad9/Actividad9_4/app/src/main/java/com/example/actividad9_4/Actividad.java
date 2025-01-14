@@ -11,16 +11,19 @@ public class Actividad extends FragmentActivity implements Fragmento1.Callbacks{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_actividad);
+        Contenido.inicializarDatos(); // Inicializa los datos aquí
     }
+
 
     @Override
     public void onEntradaSeleccionada(String id) {
-        // Agrega aquí el código que deseas ejecutar al seleccionar un elemento.
-        // Puse un Toast para mostrar un mensaje temporal.
-        Toast.makeText(this, "TOCADO EL " + id, Toast.LENGTH_SHORT).show();
-            Intent detalleIntent = new Intent(this, Fragmento2.class);
-            startActivity(detalleIntent);
 
-        }
+            Toast.makeText(this, "TOCADO EL " + id, Toast.LENGTH_SHORT).show();
+            Intent detalleIntent = new Intent(this, Fragmento2.class);
+            Toast.makeText(this, "Abriendo Fragmento2", Toast.LENGTH_SHORT).show();
+            startActivity(detalleIntent);
     }
+
+
+}
 
