@@ -30,8 +30,8 @@ public class Contenido extends Fragment {
             @Override
             public void onEntrada(Object entrada, View view) {
                 Lista_entrada item = (Lista_entrada) entrada;
-                TextView textoTitulo = view.findViewById(R.id.textoTitulo);
-                ImageView imagenLista = view.findViewById(R.id.imagenEntrada);
+                TextView textoTitulo = view.findViewById(R.id.textotitulo);
+                ImageView imagenLista = view.findViewById(R.id.imagen);
 
                 if (textoTitulo != null) {
                     textoTitulo.setText(item.getTextoTitulo());

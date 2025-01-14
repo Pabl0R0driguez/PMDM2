@@ -37,16 +37,13 @@ public class Fragmento1 extends ListFragment {
             public void onEntrada(Object entrada, View view) {
                 Contenido.Lista_entrada item = (Contenido.Lista_entrada) entrada;
 
-                TextView textoTitulo = view.findViewById(R.id.textoTitulo);
-                TextView textoDescripcion = view.findViewById(R.id.textoDescripcion);
-                ImageView imagenEntrada = view.findViewById(R.id.imagenEntrada);
+                TextView textoTitulo = view.findViewById(R.id.textotitulo);
+                ImageView imagenEntrada = view.findViewById(R.id.imagen);
 
                 if (textoTitulo != null) {
                     textoTitulo.setText(item.getTextoTitulo());
                 }
-                if (textoDescripcion != null) {
-                    textoDescripcion.setText(item.getTextoDescripcion());
-                }
+
                 if (imagenEntrada != null) {
                     imagenEntrada.setImageResource(item.getIdImagen());
                 }
@@ -76,6 +73,11 @@ public class Fragmento1 extends ListFragment {
     @Override
     public void onListItemClick(ListView l, View v, int position, long id) {
         super.onListItemClick(l, v, position, id);
+
+        String entradaId = Contenido.ENT_LISTA.get(position).getId();
+        Log.d("DEBUG", "Entrada seleccionada en Fragmento1: " + entradaId);
+        ((Callbacks) getActivity()).onEntradaSeleccionada(entradaId);
+
         Log.d("Fragmento1", "Elemento tocado en la posición: " + position);
         if (mCallbacks != null) {
             Log.d("Fragmento1", "mCallbacks está inicializado");
