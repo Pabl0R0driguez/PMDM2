@@ -22,7 +22,9 @@ public class Fragmento1 extends ListFragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflar el diseño del fragmento
+        Log.d("Fragmento1", "onCreateView llamado");
         return inflater.inflate(R.layout.fragmento1_layout, container, false);
+
     }
 
     @Override
