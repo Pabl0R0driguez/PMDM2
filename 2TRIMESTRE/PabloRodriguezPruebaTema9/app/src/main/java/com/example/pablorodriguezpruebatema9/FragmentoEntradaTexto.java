@@ -14,11 +14,11 @@ import androidx.lifecycle.ViewModelProvider;
 
 public class FragmentoEntradaTexto extends Fragment {
 
-    public interface OnTextoEnviadoListener {
+    public interface Callbacks {
         void onTextoEnviado(String texto);
     }
 
-    private OnTextoEnviadoListener callback;
+    private Callbacks callback;
 
     @Nullable
     @Override
@@ -41,8 +41,8 @@ public class FragmentoEntradaTexto extends Fragment {
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
-        if (context instanceof OnTextoEnviadoListener) {
-            callback = (OnTextoEnviadoListener) context;
+        if (context instanceof Callbacks) {
+            callback = (Callbacks) context;
         } else {
             throw new ClassCastException(context.toString() + " debe implementar OnTextoEnviadoListener");
         }

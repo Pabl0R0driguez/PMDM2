@@ -3,7 +3,7 @@ package com.example.pablorodriguezpruebatema9;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 
-public class MainActivity extends AppCompatActivity implements FragmentoEntradaTexto.OnTextoEnviadoListener {
+public class MainActivity extends AppCompatActivity implements FragmentoEntradaTexto.Callbacks {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
