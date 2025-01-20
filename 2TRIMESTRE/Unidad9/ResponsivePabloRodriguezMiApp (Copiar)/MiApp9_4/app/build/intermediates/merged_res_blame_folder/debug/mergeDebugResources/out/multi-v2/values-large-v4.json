@@ -1,0 +1,62 @@
+{
+    "logs": [
+        {
+            "outputFile": "com.example.propuesta9_4.app-mergeDebugResources-29:/values-large-v4/values-large-v4.xml",
+            "map": [
+                {
+                    "source": "/home/pablo/.gradle/caches/8.10.2/transforms/bacb341c2609835d1629c7385554b902/transformed/material-1.12.0/res/values-large-v4/values-large-v4.xml",
+                    "from": {
+                        "startLines": "2,3,4,5",
+                        "startColumns": "4,4,4,4",
+                        "startOffsets": "55,169,285,407",
+                        "endColumns": "113,115,121,133",
+                        "endOffsets": "164,280,402,536"
+                    },
+                    "to": {
+                        "startLines": "14,15,16,17",
+                        "startColumns": "4,4,4,4",
+                        "startOffsets": "836,950,1066,1188",
+                        "endColumns": "113,115,121,133",
+                        "endOffsets": "945,1061,1183,1317"
+                    }
+                },
+                {
+                    "source": "/home/pablo/.gradle/caches/8.10.2/transforms/333c1e5ea27b2d6fc97abcd40c01701a/transformed/appcompat-1.7.0/res/values-large-v4/values-large-v4.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,7,8,9,10",
+                        "startColumns": "4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,114,185,256,326,396,464,532,636",
+                        "endColumns": "58,70,70,69,69,67,67,103,115",
+                        "endOffsets": "109,180,251,321,391,459,527,631,747"
+                    },
+                    "to": {
+                        "startLines": "2,3,4,5,6,7,8,12,13",
+                        "startColumns": "4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,114,185,256,326,396,464,616,720",
+                        "endColumns": "58,70,70,69,69,67,67,103,115",
+                        "endOffsets": "109,180,251,321,391,459,527,715,831"
+                    }
+                },
+                {
+                    "source": "/home/pablo/PMDM2/2TRIMESTRE/Unidad9/ResponsivePabloRodriguezMiApp/MiApp9_4/app/src/main/res/values-large/layout.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "57",
+                        "endLines": "4",
+                        "endColumns": "7",
+                        "endOffsets": "139"
+                    },
+                    "to": {
+                        "startLines": "9",
+                        "startColumns": "4",
+                        "startOffsets": "532",
+                        "endLines": "11",
+                        "endColumns": "7",
+                        "endOffsets": "611"
+                    }
+                }
+            ]
+        }
+    ]
+}

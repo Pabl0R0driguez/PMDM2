@@ -13,26 +13,19 @@ import androidx.lifecycle.ViewModelProvider;
 
 public class FragmentoMostrarTexto extends Fragment {
 
-    private ModeloCompartido modeloCompartido;
+    private TextView textoMostrado;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View vista = inflater.inflate(R.layout.fragment_display, container, false);
-
-        // Inicializar el ViewModel compartido
-        modeloCompartido = new ViewModelProvider(requireActivity()).get(ModeloCompartido.class);
-
-        TextView textoMostrado = vista.findViewById(R.id.displayTextView);
-
-        // Observar cambios en el texto del ViewModel
-        modeloCompartido.getTexto().observe(getViewLifecycleOwner(), new Observer<String>() {
-            @Override
-            public void onChanged(String texto) {
-                textoMostrado.setText(texto);
-            }
-        });
-
+        textoMostrado = vista.findViewById(R.id.displayTextView);
         return vista;
+    }
+
+    public void actualizarTexto(String texto) {
+        if (textoMostrado != null) {
+            textoMostrado.setText(texto);
+        }
     }
 }

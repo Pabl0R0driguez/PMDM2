@@ -1,0 +1,32 @@
+R_DEF: Internal format may change without notice
+local
+color black
+color white
+drawable ic_launcher_background
+drawable ic_launcher_foreground
+drawable ima1
+drawable ima2
+drawable ima3
+drawable ima4
+drawable ima5
+drawable ima6
+drawable ima7
+drawable ima8
+id fragment_listado
+id frame_contenedor
+id imagen
+id imagenlista
+id textocontenido
+id textotitulo
+layout activity_main
+layout layout_detalle
+layout layout_dospaneles
+layout layout_listado
+layout layout_unpanel
+mipmap ic_launcher
+mipmap ic_launcher_round
+string app_name
+style Base.Theme.Propuesta9_4
+style Theme.Propuesta9_4
+xml backup_rules
+xml data_extraction_rules

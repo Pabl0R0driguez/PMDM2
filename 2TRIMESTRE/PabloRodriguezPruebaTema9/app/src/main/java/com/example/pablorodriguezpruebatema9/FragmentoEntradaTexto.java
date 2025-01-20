@@ -1,5 +1,6 @@
 package com.example.pablorodriguezpruebatema9;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,27 +14,43 @@ import androidx.lifecycle.ViewModelProvider;
 
 public class FragmentoEntradaTexto extends Fragment {
 
-    private ModeloCompartido modeloCompartido;
+    public interface OnTextoEnviadoListener {
+        void onTextoEnviado(String texto);
+    }
+
+    private OnTextoEnviadoListener callback;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View vista = inflater.inflate(R.layout.fragment_input, container, false);
 
-        // Inicializar el ViewModel compartido
-        modeloCompartido = new ViewModelProvider(requireActivity()).get(ModeloCompartido.class);
-
         EditText campoTexto = vista.findViewById(R.id.inputEditText);
         Button botonEnviar = vista.findViewById(R.id.sendButton);
 
-        // Configurar la acción del botón para enviar texto
         botonEnviar.setOnClickListener(v -> {
             String texto = campoTexto.getText().toString();
-            if (!texto.isEmpty()) {
-                modeloCompartido.setTexto(texto); // Enviar texto al ViewModel
+            if (!texto.isEmpty() && callback != null) {
+                callback.onTextoEnviado(texto);
             }
         });
 
         return vista;
+    }
+
+    @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+        if (context instanceof OnTextoEnviadoListener) {
+            callback = (OnTextoEnviadoListener) context;
+        } else {
+            throw new ClassCastException(context.toString() + " debe implementar OnTextoEnviadoListener");
+        }
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        callback = null;
     }
 }
