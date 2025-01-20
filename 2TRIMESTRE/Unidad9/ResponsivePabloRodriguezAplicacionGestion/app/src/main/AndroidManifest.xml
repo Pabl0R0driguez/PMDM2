@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="android.example.aplicaciongestion">
+
+    <!-- Permiso para acceso a Internet, necesario para cargar URLs en WebView_act (si lo usas en el futuro) -->
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.AplicacionGestion"
+        tools:targetApi="31">
+
+        <!-- Actividad principal que es la primera que se lanza (Login) -->
+        <activity
+            android:name=".LoginMain"
+            android:exported="true"
+            android:theme="@style/AppTheme"
+
+            >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- Actividad para mostrar la lista de motocicletas -->
+        <activity
+            android:name=".MainMotocicletas"
+            android:exported="true"
+        />
+
+        <!-- Actividad para agregar una nueva motocicleta -->
+        <activity
+            android:name=".AgregarMotocicleta"
+            android:exported="true"
+            />
+
+        <!-- Actividad para agregar una nueva motocicleta -->
+        <activity
+            android:name=".ModificarMotocicleta"
+            android:exported="true"
+        />
+
+
+    </application>
+
+
+    </manifest>
