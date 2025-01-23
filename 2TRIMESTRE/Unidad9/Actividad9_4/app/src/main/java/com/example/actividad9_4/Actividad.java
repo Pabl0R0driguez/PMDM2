@@ -13,7 +13,7 @@ public class Actividad extends FragmentActivity implements Fragmento1.Callbacks{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.layout_dospaneles);
+        setContentView(R.layout.activity_actividad);
         Contenido.inicializarDatos(); // Inicializa los datos aquí
 
 
