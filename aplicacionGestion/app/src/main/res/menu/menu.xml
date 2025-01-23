@@ -1,0 +1,20 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/buscar"
+        android:title="Buscar"
+        android:icon="@drawable/lupa"
+        app:showAsAction="ifRoom|collapseActionView"
+        app:actionViewClass="androidx.appcompat.widget.SearchView" />
+
+
+    <item
+        android:id="@+id/filtrar"
+        android:title="Filtrar por precio mayor" />
+    <item
+        android:id="@+id/filtrar_menos"
+        android:title="Filtrar por precio menor" />
+
+
+</menu>

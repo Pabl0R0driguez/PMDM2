@@ -46,6 +46,11 @@
             android:exported="true"
         />
 
+        <activity
+            android:name=".RegistroActivity"
+            android:exported="true"
+            />
+
 
     </application>
 

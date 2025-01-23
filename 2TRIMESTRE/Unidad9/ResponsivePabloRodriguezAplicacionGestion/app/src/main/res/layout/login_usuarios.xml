@@ -5,15 +5,27 @@
     android:orientation="vertical"
     android:gravity="center"
     android:padding="16dp"
-    android:background="#ADD8E6"> <!-- Fondo azul clarito -->
+    android:background="#99FF9D"> <!-- Fondo azul clarito -->
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="MOTO CHECK"
+        android:textColor="@android:color/black"
+        android:layout_marginBottom="65dp"
+        android:textSize="35dp"
+        android:fontFamily="@font/letra"
+        android:textStyle="bold"
+        />
 
     <!-- Logo de la aplicación -->
     <ImageView
         android:id="@+id/logoApp"
-        android:layout_width="208dp"
-        android:layout_height="155dp"
+        android:layout_width="228dp"
+        android:layout_height="185dp"
         android:src="@drawable/raza"
-        android:layout_marginBottom="32dp" /> <!-- Espacio debajo de la imagen -->
+        android:layout_marginBottom="60dp" />
 
     <!-- Campo para el nombre de usuario -->
     <EditText
@@ -21,23 +33,49 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Nombre de usuario"
-        android:inputType="text" />
+        android:background="@color/white"
+        android:fontFamily="@font/letra"
+        android:padding="10dp"
+        android:textStyle="bold"
+        android:inputType="text"
+        android:layout_marginBottom="16dp" />
 
     <!-- Campo para la clave del usuario -->
     <EditText
         android:id="@+id/claveUsuario"
         android:layout_width="match_parent"
+        android:fontFamily="@font/letra"
         android:layout_height="wrap_content"
         android:hint="Clave"
-        android:inputType="textPassword" />
+        android:background="@color/white"
+        android:padding="10dp"
+        android:inputType="textPassword"
+        android:textStyle="bold"
+        android:layout_marginBottom="16dp" />
 
     <Button
         android:id="@+id/botonIniciarSesion"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/letra"
         android:text="Iniciar Sesión"
         android:textColor="@color/black"
-        android:backgroundTint="#94FD98"
+        android:backgroundTint="#53AE57"
+        android:textStyle="bold"
         android:layout_marginTop="32dp" />
+
+    <TextView
+        android:id="@+id/textRegistrar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Registrar nuevo usuario"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        android:layout_marginTop="16dp"
+        android:clickable="true"
+        android:focusable="true" />
+
+
+
 
 </LinearLayout>

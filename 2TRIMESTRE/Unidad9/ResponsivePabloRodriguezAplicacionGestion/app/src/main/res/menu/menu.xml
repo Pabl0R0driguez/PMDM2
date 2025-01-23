@@ -11,7 +11,8 @@
 
     <item
         android:id="@+id/filtrar"
-        android:title="Filtrar por precio mayor" />
+        android:title="Filtrar por precio mayor"
+        />
     <item
         android:id="@+id/filtrar_menos"
         android:title="Filtrar por precio menor" />

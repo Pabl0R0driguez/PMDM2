@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
@@ -21,7 +22,8 @@ public class AgregarMotocicleta extends AppCompatActivity {
 
     private EditText edtTitulo, edtContenido, edtPrecio;
     private RatingBar ratingBar;
-    private Button btnGuardar, btnSeleccionarFecha;
+    private Button  btnSeleccionarFecha;
+    private ImageButton btnGuardar;
     private TextView textViewFecha;
     private String fechaSeleccionada = "Fecha no seleccionada"; // Valor inicial de la fecha
 
@@ -50,7 +52,6 @@ public class AgregarMotocicleta extends AppCompatActivity {
             float rating = ratingBar.getRating();
 
             // Validación de los campos
-// Validación de los campos
             if (titulo.isEmpty() || contenido.isEmpty() || precioStr.isEmpty() || fechaSeleccionada.equals("Fecha no seleccionada")) {
                 // Inflar el layout personalizado del Toast
                 LayoutInflater inflater = getLayoutInflater();
@@ -86,7 +87,20 @@ public class AgregarMotocicleta extends AppCompatActivity {
             // Finalizar la actividad
             finish();
         });
+
+        // Botón cancelar
+        ImageButton botonCancelar = findViewById(R.id.btnCancelar);
+        botonCancelar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(AgregarMotocicleta.this, MainMotocicletas.class);
+                startActivity(intent); // Inicia la nueva actividad
+                finish(); // Cierra la actividad actual
+            }
+        });
     }
+
+
 
     // Método para mostrar el selector de fecha
     private void seleccionarFecha() {

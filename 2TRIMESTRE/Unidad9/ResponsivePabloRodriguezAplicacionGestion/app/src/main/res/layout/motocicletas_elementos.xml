@@ -4,72 +4,82 @@
     android:orientation="vertical"
     android:gravity="center"
     android:padding="8dp"
-    android:background="#ADD8E6">
-
-    <ImageView
-        android:id="@+id/imagenElemento"
-        android:layout_width="200dp"
-        android:layout_height="150dp"
-        android:contentDescription="Imagen de la motocicleta"
-        android:scaleType="centerCrop"
-        android:layout_gravity="center" />
+    android:background="#99FF9D">
 
     <TextView
         android:id="@+id/tituloElemento"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textStyle="bold"
-        android:textSize="20sp"
+        android:textSize="30sp"
         android:textColor="@color/black"
         android:layout_marginTop="8dp"
         android:gravity="center"
         android:layout_marginBottom="16dp"
         android:layout_gravity="center" />
 
-    <TextView
-        android:id="@+id/contenidoElemento"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="16sp"
-        android:layout_marginTop="8dp"
+
+    <!-- Imagen más grande, ajustada al ancho de la pantalla -->
+    <ImageView
+        android:id="@+id/imagenElemento"
+        android:layout_width="317dp"
+        android:layout_height="201dp"
         android:layout_marginBottom="16dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_gravity="center" />
+        android:contentDescription="Imagen de la motocicleta"
+        android:scaleType="centerCrop" />
 
+    <!-- Descripción con texto más grande y sin negrita -->
     <TextView
-        android:id="@+id/precioElemento"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="18sp"
-        android:autoLink="phone"
-        android:layout_marginTop="8dp"
-        android:layout_gravity="center" />
+    android:id="@+id/contenidoElemento"
+    android:layout_width="350dp"
+    android:layout_height="wrap_content"
+    android:textSize="20sp"
+    android:layout_marginBottom="16dp"
+    android:layout_marginStart="13dp"
+    android:layout_marginEnd="10dp"
+    android:gravity="center"
+    android:layout_gravity="center"
+        android:textColor="@color/black"
+    android:padding="8dp"
+    android:text="Descripción del elemento" />
 
 
 
+    <!-- RatingBar -->
     <RatingBar
         android:id="@+id/ratingElemento"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:numStars="5"
         android:stepSize="1.0"
-        android:progressTint="#3678FF"
+        android:progressTint="#CDDC39"
         android:layout_marginTop="16dp"
         android:layout_gravity="center"
         android:rating="3.0"
-        android:isIndicator="true"
-        />
+        android:isIndicator="true" />
 
-
+    <!-- Fecha -->
     <TextView
         android:id="@+id/textViewFecha"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="------------------"
+        android:text="Fecha: 23/01/2025"
         android:textSize="18sp"
         android:layout_marginTop="16dp"
         android:gravity="center"
-        android:layout_gravity="center"/>
+        android:textColor="@color/black"
+        android:layout_gravity="center" />
+
+    <!-- Precio más grande -->
+    <TextView
+        android:id="@+id/precioElemento"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        android:layout_marginTop="16dp"
+        android:textColor="@color/black"
+        android:layout_gravity="center"
+        android:text="Precio: $123.45" />
 
 </LinearLayout>

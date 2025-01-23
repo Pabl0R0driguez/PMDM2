@@ -1,0 +1,95 @@
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:gravity="center"
+    android:scrollbars="vertical"
+    android:background="#ADD8E6">
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="AÑADIR MOTO"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="#000000"
+        android:gravity="center"
+        android:layout_marginBottom="20dp" />
+
+    <EditText
+        android:id="@+id/edtTitulo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Título de la Moto"
+        android:background="@color/white"
+        android:padding="10dp"
+        android:layout_marginBottom="16dp" />
+
+    <EditText
+        android:id="@+id/edtContenido"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Contenido/Descripción"
+        android:background="@color/white"
+        android:padding="10dp"
+        android:layout_marginBottom="16dp" />
+
+    <EditText
+        android:id="@+id/edtPrecio"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Precio"
+        android:background="@color/white"
+        android:padding="10dp"
+        android:layout_marginBottom="16dp" />
+
+    <RatingBar
+        android:id="@+id/ratingBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:numStars="5"
+        android:stepSize="1.0"
+        android:progressTint="#3678FF"
+        android:layout_marginTop="16dp" />
+
+    <Button
+        android:id="@+id/botonFecha"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Seleccionar Fecha"
+        android:backgroundTint="#4C9CD9"
+        android:textColor="#BF000000"
+        android:layout_gravity="center" />
+
+    <TextView
+        android:id="@+id/textViewFecha"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="------------------"
+        android:textSize="18sp"
+        android:layout_marginTop="16dp"
+        android:gravity="center"
+        android:layout_gravity="center"/>
+
+
+    <ImageView
+        android:id="@+id/imagenSeleccionada"
+        android:layout_width="222dp"
+        android:layout_height="182dp"
+        android:contentDescription="Imagen Moto"
+        android:src="@drawable/moto1"
+        android:layout_marginTop="20dp" />
+
+    <Button
+        android:id="@+id/btnGuardar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Guardar Moto"
+        android:textColor="#FFFFFF"
+        android:background="@color/white"
+        android:layout_marginTop="20dp" />
+
+</LinearLayout>

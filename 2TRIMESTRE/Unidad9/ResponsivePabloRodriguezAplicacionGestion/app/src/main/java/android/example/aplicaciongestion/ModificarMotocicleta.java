@@ -1,11 +1,13 @@
 package android.example.aplicaciongestion;
 
+
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
@@ -36,6 +38,7 @@ public class ModificarMotocicleta extends AppCompatActivity {
         btnFecha = findViewById(R.id.botonFecha);
         ratingBar = findViewById(R.id.ratingBar); // Inicializar RatingBar
 
+
         // Obtener la motocicleta enviada desde la actividad anterior
         Intent intent = getIntent();
         Motocicletas moto = (Motocicletas) intent.getSerializableExtra("motocicleta");
@@ -53,7 +56,7 @@ public class ModificarMotocicleta extends AppCompatActivity {
         ratingBar.setRating(moto.getPuntuacion()); // Asumiendo que `getRating` retorna un valor flotante
 
         // Configurar el botón para guardar los cambios
-        Button btnGuardar = findViewById(R.id.btnGuardar);
+        ImageButton btnGuardar = findViewById(R.id.btnGuardar);
         btnGuardar.setOnClickListener(v -> {
             // Crear una nueva motocicleta con los datos modificados
             moto.setTitulo(edtTitulo.getText().toString());
@@ -71,6 +74,19 @@ public class ModificarMotocicleta extends AppCompatActivity {
             setResult(RESULT_OK, resultIntent);
             finish(); // Cerrar la actividad
         });
+
+        // Botón cancelar
+        ImageButton botonCancelar = findViewById(R.id.btnCancelar);
+        botonCancelar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ModificarMotocicleta.this, MainMotocicletas.class);
+                startActivity(intent); // Inicia la nueva actividad
+                finish(); // Cierra la actividad actual
+            }
+        });
+
+
 
         // Configurar el botón para seleccionar fecha
         btnFecha.setOnClickListener(v -> {
