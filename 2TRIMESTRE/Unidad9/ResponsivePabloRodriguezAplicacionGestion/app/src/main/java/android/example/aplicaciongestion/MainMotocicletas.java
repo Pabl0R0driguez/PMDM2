@@ -8,12 +8,18 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
 import androidx.appcompat.widget.Toolbar;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,9 +28,9 @@ public class MainMotocicletas extends AppCompatActivity {
     private ListView listaMotos; // ListView para mostrar las motocicletas
     private MotocicletasAdapter adaptador; // Adaptador personalizado
     private List<Motocicletas> listaMotocicletas; // Lista de motocicletas
+    private TextView textViewInformacion; // Campo para el TextView que muestra información
     private static final int REQUEST_CODE_AGREGAR_MOTO = 1; // Código de solicitud para agregar moto
     static final int REQUEST_CODE_MODIFICAR_MOTO = 1; // Código de solicitud para agregar moto
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,6 +74,25 @@ public class MainMotocicletas extends AppCompatActivity {
                 "Moto naked de 373 cc, ligera y ágil, ideal para principiantes y la ciudad.", "05/01/2024"));
     }
 
+    private void cargarInformacionDesdeArchivo() {
+        try {
+            InputStream inputStream = getResources().openRawResource(R.raw.info);
+            BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
+            StringBuilder contenido = new StringBuilder();
+            String linea;
+
+            while ((linea = reader.readLine()) != null) {
+                contenido.append(linea).append("\n");
+            }
+            reader.close();
+
+            // Mostrar el contenido en el TextView
+            textViewInformacion.setText(contenido.toString());
+        } catch (IOException e) {
+            Toast.makeText(this, "Error al cargar la información", Toast.LENGTH_SHORT).show();
+            e.printStackTrace();
+        }
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -104,6 +129,11 @@ public class MainMotocicletas extends AppCompatActivity {
         } else if (item.getItemId() == R.id.filtrar_menos) {
             adaptador.ordenarPorPrecioMenorAMayor();
             return true;
+        } else if (item.getItemId() == R.id.informacion) {
+            // Aquí puedes manejar la acción para mostrar la información, si es necesario
+            Intent intent = new Intent(MainMotocicletas.this, InformacionActivity.class);
+            startActivity(intent);
+            return true;
         }
         return super.onOptionsItemSelected(item);
     }
@@ -139,7 +169,6 @@ public class MainMotocicletas extends AppCompatActivity {
             if (nuevaMoto != null) {
                 adaptador.addItem(nuevaMoto);
                 Toast.makeText(this, "Nueva motocicleta añadida", Toast.LENGTH_SHORT).show();
-
             }
         }
 
