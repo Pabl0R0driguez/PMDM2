@@ -50,6 +50,7 @@
             android:name=".RegistroActivity"
             android:exported="true"
             />
+        <activity android:name=".InformacionActivity"></activity>
 
 
 

@@ -74,25 +74,6 @@ public class MainMotocicletas extends AppCompatActivity {
                 "Moto naked de 373 cc, ligera y ágil, ideal para principiantes y la ciudad.", "05/01/2024"));
     }
 
-    private void cargarInformacionDesdeArchivo() {
-        try {
-            InputStream inputStream = getResources().openRawResource(R.raw.info);
-            BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
-            StringBuilder contenido = new StringBuilder();
-            String linea;
-
-            while ((linea = reader.readLine()) != null) {
-                contenido.append(linea).append("\n");
-            }
-            reader.close();
-
-            // Mostrar el contenido en el TextView
-            textViewInformacion.setText(contenido.toString());
-        } catch (IOException e) {
-            Toast.makeText(this, "Error al cargar la información", Toast.LENGTH_SHORT).show();
-            e.printStackTrace();
-        }
-    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
