@@ -1,2 +1,12 @@
-Bienvenido a nuestra aplicación.
-Aquí encontrarás información sobre cómo usarla.
+
+Resumen de Funcionalidades de la Aplicación de Motocicletas
+La aplicación está diseñada para la gestión integral de motocicletas, con funcionalidades que incluyen registro, consulta, modificación y eliminación.
+
+Inicio de Sesión: El acceso está protegido por credenciales (usuario y contraseña). Si los datos son incorrectos, se muestra un mensaje de error.
+Consultar Motocicletas: Los usuarios pueden visualizar una lista con información básica (marca, modelo, año y precio). Incluye opciones de ordenamiento por precio y filtros dinámicos para facilitar la búsqueda.
+Agregar Motocicletas: Permite registrar nuevas motocicletas mediante un formulario estructurado. Un mensaje alerta si faltan campos por completar.
+Modificar Motocicletas: Los datos de una motocicleta pueden ser actualizados seleccionando el elemento deseado en la lista.
+Eliminar Motocicletas: Para borrar una motocicleta, se mantiene presionado el elemento y se selecciona la opción "Eliminar" del menú contextual.
+Filtrar por Nombre: Un sistema de búsqueda permite encontrar motocicletas ingresando su nombre, haciendo la navegación más rápida y eficiente.
+Filtrar por Precios: Los elementos pueden organizarse dinámicamente de menor a mayor o viceversa, para comparar valores fácilmente.
+El flujo general incluye un inicio de sesión, acceso a un menú principal con opciones de gestión, y herramientas de búsqueda y organización para mejorar la experiencia del usuario.

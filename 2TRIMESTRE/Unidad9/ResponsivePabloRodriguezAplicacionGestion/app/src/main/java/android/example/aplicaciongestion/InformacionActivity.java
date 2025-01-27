@@ -12,20 +12,28 @@ import java.io.InputStreamReader;
 public class InformacionActivity extends AppCompatActivity {
 
     private TextView textViewInformacion;
+    private TextView textTitulo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.informacion_activity); // Asegúrate de crear este layout
+        setContentView(R.layout.informacion_activity);
 
+        textTitulo = findViewById(R.id.titulo);
         textViewInformacion = findViewById(R.id.textViewInformacion);
+
         cargarInformacionDesdeTxt();
+        try {
+            cargarTiutlo();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     private void cargarInformacionDesdeTxt() {
         StringBuilder stringBuilder = new StringBuilder();
         try {
-            InputStream inputStream = getResources().openRawResource(R.raw.info); // Asegúrate de que tu archivo se llama 'informacion.txt' y está en la carpeta raw
+            InputStream inputStream = getResources().openRawResource(R.raw.info);
             BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
             String line;
             while ((line = reader.readLine()) != null) {
@@ -35,7 +43,26 @@ public class InformacionActivity extends AppCompatActivity {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
         textViewInformacion.setText(stringBuilder.toString());
+
     }
-}
+
+        private void cargarTiutlo() throws IOException {
+            StringBuilder stringBuilder1 = new StringBuilder();
+
+            try {
+                InputStream inputStream1 = getResources().openRawResource(R.raw.titulo);
+                BufferedReader reader1 = new BufferedReader(new InputStreamReader(inputStream1));
+                String line1;
+                while ((line1 = reader1.readLine()) != null) {
+                    stringBuilder1.append(line1).append("\n");
+                }
+                reader1.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        textTitulo.setText(stringBuilder1.toString());
+        }
+
+    }
+
