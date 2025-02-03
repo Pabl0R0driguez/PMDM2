@@ -35,7 +35,7 @@ public class LoginMain extends AppCompatActivity {
             usuarioDAO.insertarUsuario("usuario2", "clave2");
         }
 
-        mediaPlayer = MediaPlayer.create(this, R.raw.gato);
+        mediaPlayer = MediaPlayer.create(this, R.raw.moto);
         mediaPlayer.setLooping(true); // Para que la música se repita en bucle
         mediaPlayer.start();
         // Referencia al TextView de registro
