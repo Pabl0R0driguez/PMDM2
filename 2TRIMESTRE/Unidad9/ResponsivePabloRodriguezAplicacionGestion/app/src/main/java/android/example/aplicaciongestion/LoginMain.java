@@ -1,6 +1,7 @@
 package android.example.aplicaciongestion;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -13,6 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 public class LoginMain extends AppCompatActivity {
 
     private UsuarioCRUD usuarioDAO;
+    private MediaPlayer mediaPlayer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +35,9 @@ public class LoginMain extends AppCompatActivity {
             usuarioDAO.insertarUsuario("usuario2", "clave2");
         }
 
+        mediaPlayer = MediaPlayer.create(this, R.raw.gato);
+        mediaPlayer.setLooping(true); // Para que la música se repita en bucle
+        mediaPlayer.start();
         // Referencia al TextView de registro
         TextView textRegistrar = findViewById(R.id.textRegistrar);
 
