@@ -6,21 +6,37 @@ import android.media.MediaPlayer;
 import android.media.MediaRecorder;
 import android.os.Bundle;
 import android.os.Environment;
+import android.provider.MediaStore;
+import android.telephony.AccessNetworkConstants;
+import android.view.SurfaceHolder;
+import android.view.SurfaceView;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.VideoView;
+
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import java.io.IOException;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements SurfaceHolder.Callback
+ {
     private ImageButton btnRecord, btnPause, btnPlay;
+
     private TextView tvStatus;
-    private MediaRecorder mediaRecorder;
-    private MediaPlayer mediaPlayer;
+
+    private MediaRecorder grabador;
+    private MediaPlayer reproductor;
+
     private String audioFilePath;
+
+     private VideoView surfaceView;
+     private SurfaceHolder surfaceHolder;
+
+     private String ruta;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +49,8 @@ public class MainActivity extends AppCompatActivity {
         btnPlay = findViewById(R.id.btnPlay);
         tvStatus = findViewById(R.id.tvStatus);
 
+        ruta = Environment.getExternalStorageState() + "/mivideo.mp4";
+
         // Ruta del archivo de audio
         audioFilePath = getExternalFilesDir(Environment.DIRECTORY_MUSIC).getAbsolutePath() + "/audio_record.3gp";
 
@@ -42,76 +60,55 @@ public class MainActivity extends AppCompatActivity {
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.RECORD_AUDIO, Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1000);
         }
 
-        // Evento para grabar
-        btnRecord.setOnClickListener(v -> startRecording());
+        //  Pantalla
+        surfaceView = findViewById(R.id.surfacevView);
 
-        // Evento para detener grabación
-        btnPause.setOnClickListener(v -> pauseRecoriding());
+        surfaceHolder = surfaceView.getHolder();
+        surfaceHolder.addCallback(this);
+        // Configuramos el tipo de buffered
+        surfaceHolder.setType(SurfaceHolder.SURFACE_TYPE_PUSH_BUFFERS);
 
-        // Evento para reproducir
-        btnPlay.setOnClickListener(v -> playRecording());
+        btnRecord.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                grabador.setAudioSource(MediaRecorder.AudioSource.MIC);
+                grabador.setVideoEncoder(MediaRecorder.VideoEncoder.H263);
+                grabador.setAudioEncoder(MediaRecorder.AudioEncoder.DEFAULT);
+                grabador.setOutputFormat(MediaRecorder.OutputFormat.MPEG_4);
+                grabador.setVideoEncoder(MediaRecorder.VideoEncoder.MPEG_4_SP);
+
+                grabador.setOutputFile(ruta);
+
+                try {
+                    grabador.prepare();
+                } catch (IOException e) {
+
+                }
+                grabador.start();
+
+            }
+        });
     }
-
-    private void startRecording() {
-        try {
-            // Configuración de MediaRecorder
-            mediaRecorder = new MediaRecorder();
-            mediaRecorder.setAudioSource(MediaRecorder.AudioSource.MIC);
-            mediaRecorder.setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP);
-            mediaRecorder.setOutputFile(audioFilePath);
-            mediaRecorder.setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB);
-            mediaRecorder.prepare();
-            mediaRecorder.start();
-
-            // Cambiar estado de UI
-            tvStatus.setText("INICIANDO LA GRABACIÓN...");
-            btnRecord.setVisibility(View.GONE);
-            btnPause.setVisibility(View.VISIBLE);
-            btnPlay.setVisibility(View.GONE);
-
-            // Mostrar mensaje
-            Toast.makeText(this, "Grabando...", Toast.LENGTH_SHORT).show();
-        } catch (IOException e) {
-            e.printStackTrace();
+     @Override
+     public void surfaceCreated(@NonNull SurfaceHolder holder) {
+        if(grabador == null){
+            grabador = new MediaRecorder();
+            grabador.setPreviewDisplay(holder.getSurface());
         }
-    }
+     }
 
-    private void pauseRecoriding() {
-        if (mediaRecorder != null) {
-            mediaRecorder.pause();
-            mediaRecorder.release();
-            mediaRecorder = null;
+     @Override
+     public void surfaceChanged(@NonNull SurfaceHolder holder, int format, int width, int height) {
+         if (reproductor == null) {
+             reproductor = new MediaPlayer();
+             reproductor.setDisplay(holder);
+         }
+     }
 
-            // Cambiar estado de UI
-            tvStatus.setText("AUDIO GRABADO CORRECTAMENTE");
-            btnRecord.setVisibility(View.VISIBLE);
-            btnPause.setVisibility(View.GONE);
-            btnPlay.setVisibility(View.VISIBLE);
+     @Override
+     public void surfaceDestroyed(@NonNull SurfaceHolder holder) {
+         grabador.release();
+         reproductor.release();
 
-            // Mostrar mensaje
-            Toast.makeText(this, "Grabación finalizada", Toast.LENGTH_SHORT).show();
-        }
-    }
-
-    private void playRecording() {
-        try {
-            mediaPlayer = new MediaPlayer();
-            mediaPlayer.setDataSource(audioFilePath);
-            mediaPlayer.prepare();
-            mediaPlayer.start();
-
-            // Cambiar estado de UI
-            tvStatus.setText("REPRODUCIENDO AUDIO...");
-            Toast.makeText(this, "Reproduciendo...", Toast.LENGTH_SHORT).show();
-
-            // Detectar fin de la reproducción
-            mediaPlayer.setOnCompletionListener(mp -> {
-                tvStatus.setText("GRABANDO SONIDOS");
-                btnPlay.setVisibility(View.VISIBLE);
-            });
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-}
+     }
+ }

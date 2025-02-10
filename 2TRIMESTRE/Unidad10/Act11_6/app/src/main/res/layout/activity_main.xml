@@ -33,7 +33,6 @@
             android:layout_height="wrap_content"
             android:src="@android:drawable/ic_media_pause"
             android:contentDescription="Detener"
-            android:visibility="gone"
 
            />
 
@@ -43,7 +42,13 @@
             android:layout_height="wrap_content"
             android:src="@android:drawable/ic_media_play"
             android:contentDescription="Reproducir"
-            android:visibility="gone"
             />
+
+        <VideoView
+            android:id="@+id/surfacevView"
+            android:layout_width="640px"
+            android:layout_height="520px">
+
+        </VideoView>
     </LinearLayout>
 </LinearLayout>
