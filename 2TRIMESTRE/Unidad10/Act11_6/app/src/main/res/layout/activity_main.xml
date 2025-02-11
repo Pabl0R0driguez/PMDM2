@@ -1,54 +1,104 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:gravity="center"
-    android:padding="20dp">
+    android:padding="20dp"
+    android:background="@android:color/background_light">
 
+    <!-- Título -->
     <TextView
         android:id="@+id/tvStatus"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="GRABANDO SONIDOS"
-        android:textSize="20sp"
+        android:textSize="24sp"
         android:textStyle="bold"
-        android:paddingBottom="20dp"/>
+        android:textColor="@android:color/black"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:paddingBottom="16dp"/>
 
+    <!-- VideoView -->
+    <VideoView
+        android:id="@+id/surfacevView"
+        android:layout_width="0dp"
+        android:layout_height="300dp"
+        android:background="@android:color/darker_gray"
+        app:layout_constraintTop_toBottomOf="@id/tvStatus"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/buttonContainer"
+        android:elevation="4dp"/>
+
+    <!-- Contenedor de botones -->
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:id="@+id/buttonContainer"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:paddingTop="16dp"
+        app:layout_constraintTop_toBottomOf="@id/surfacevView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
 
-        <ImageButton
-            android:id="@+id/btnRecord"
+        <androidx.cardview.widget.CardView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@android:drawable/ic_btn_speak_now"
-            android:contentDescription="Grabar"/>
+            app:cardCornerRadius="10dp"
+            app:cardElevation="6dp"
+            android:layout_margin="8dp">
 
-        <ImageButton
-            android:id="@+id/btnStop"
+            <Button
+                android:id="@+id/btnRecord"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:text="GRABAR"
+                android:textStyle="bold"
+                android:drawableStart="@android:drawable/ic_btn_speak_now"
+                android:backgroundTint="@android:color/holo_red_light"
+                android:textColor="@android:color/white"/>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@android:drawable/ic_media_pause"
-            android:contentDescription="Detener"
+            app:cardCornerRadius="10dp"
+            app:cardElevation="6dp"
+            android:layout_margin="8dp">
 
-           />
+            <Button
+                android:id="@+id/btnStop"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:text="PARAR"
+                android:textStyle="bold"
+                android:drawableStart="@android:drawable/ic_media_pause"
+                android:backgroundTint="@android:color/holo_orange_light"
+                android:textColor="@android:color/white"
+                android:enabled="false"/>
+        </androidx.cardview.widget.CardView>
 
-        <ImageButton
-            android:id="@+id/btnPlay"
+        <androidx.cardview.widget.CardView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@android:drawable/ic_media_play"
-            android:contentDescription="Reproducir"
-            />
+            app:cardCornerRadius="10dp"
+            app:cardElevation="6dp"
+            android:layout_margin="8dp">
 
-        <VideoView
-            android:id="@+id/surfacevView"
-            android:layout_width="640px"
-            android:layout_height="520px">
+            <Button
+                android:id="@+id/btnPlay"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:text="REPRODUCIR"
+                android:textStyle="bold"
+                android:drawableStart="@android:drawable/ic_media_play"
+                android:backgroundTint="@android:color/holo_green_light"
+                android:textColor="@android:color/white"/>
+        </androidx.cardview.widget.CardView>
 
-        </VideoView>
     </LinearLayout>
-</LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
