@@ -19,7 +19,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "TareaLocalizacion"
-include(":app")
+rootProject.name = "JuegoFinal"
 include(":app")
  
