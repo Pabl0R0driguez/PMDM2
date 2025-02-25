@@ -14,7 +14,7 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
     private GameThread gameThread;
     private ArrayList<Obstacle> obstacles;
     private Paint paint;
-    private Player player; // Instancia del jugador
+    private Player player;
     private int score;
     private boolean isGameOver;
     private long lastObstacleTime;
@@ -24,7 +24,7 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
         super(context);
         getHolder().addCallback(this);
         gameThread = new GameThread(getHolder(), this);
-        player = new Player(getContext(), 200, 600); // Crear jugador en la posición (200, 600)
+        player = new Player(context, 100, 500); // Ajustado para que coincida con los obstáculos
         obstacles = new ArrayList<>();
         paint = new Paint();
         score = 0;
@@ -57,33 +57,29 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
     public void update() {
         if (isGameOver) return;
 
-        player.update(); // Actualizar el estado del jugador
+        player.update();
 
-        // Generar obstáculos
         long currentTime = System.currentTimeMillis();
-        if (currentTime - lastObstacleTime > 1500) { // Cada 1.5 segundos
-            obstacles.add(new Obstacle(getWidth(), 600)); // Obstáculos a la altura 600
+        if (currentTime - lastObstacleTime > 1500) {
+            obstacles.add(new Obstacle(getWidth(), 1000)); // Obstáculos a la misma altura que el personaje
             lastObstacleTime = currentTime;
         }
 
-        // Mover obstáculos
-        for (int i = 0; i < obstacles.size(); i++) {
+        for (int i = obstacles.size() - 1; i >= 0; i--) {
             obstacles.get(i).update();
-            if (obstacles.get(i).getX() < -100) { // Si el obstáculo se sale de la pantalla
+            if (obstacles.get(i).getX() < -100) {
                 obstacles.remove(i);
-                score++; // Sumar puntos cuando se elimina un obstáculo
+                score++;
             }
         }
 
-        // Colisión
         for (Obstacle obs : obstacles) {
             if (player.collidesWith(obs)) {
-                isGameOver = true; // Terminar el juego si hay colisión
+                isGameOver = true;
                 break;
             }
         }
 
-        // Cambio de fondo (día/noche)
         if (score % 10 == 0) {
             backgroundColor = (backgroundColor == Color.CYAN) ? Color.DKGRAY : Color.CYAN;
         }
@@ -94,11 +90,11 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
         super.draw(canvas);
         if (canvas == null) return;
 
-        canvas.drawColor(backgroundColor); // Establecer el color de fondo
-        player.draw(canvas); // Dibujar el jugador
+        canvas.drawColor(backgroundColor);
+        player.draw(canvas); // Dibujar solo una vez
 
         for (Obstacle obs : obstacles) {
-            obs.draw(canvas); // Dibujar los obstáculos
+            obs.draw(canvas);
         }
 
         paint.setColor(Color.WHITE);
@@ -107,14 +103,14 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
 
         if (isGameOver) {
             paint.setTextSize(80);
-            canvas.drawText("GAME OVER", getWidth() / 4, getHeight() / 2, paint); // Mensaje de game over
+            canvas.drawText("GAME OVER", getWidth() / 4, getHeight() / 2, paint);
         }
     }
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         if (event.getAction() == MotionEvent.ACTION_DOWN) {
-            player.jump(); // Hacer saltar al jugador
+            player.jump();
             return true;
         }
         return super.onTouchEvent(event);

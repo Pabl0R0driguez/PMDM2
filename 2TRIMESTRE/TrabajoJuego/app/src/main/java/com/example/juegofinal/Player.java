@@ -24,17 +24,14 @@ public class Player {
         this.y = y;
         this.velocity = 0;
         this.isJumping = false;
-        this.hitbox = new Rect(x, y, x + 100, y + 100);
 
-        // Cargar el spritesheet completo
+        // Cargar el spritesheet
         spriteSheet = BitmapFactory.decodeResource(context.getResources(), R.drawable.run);
 
-        // Suponiendo que hay 8 imágenes en una fila
-        int totalFrames = 8;
+        int totalFrames = 7; // Asegurar que el número de frames es correcto
         frameWidth = spriteSheet.getWidth() / totalFrames;
         frameHeight = spriteSheet.getHeight();
 
-        // Extraer cada frame en un array
         frames = new Bitmap[totalFrames];
         for (int i = 0; i < totalFrames; i++) {
             frames[i] = Bitmap.createBitmap(spriteSheet, i * frameWidth, 0, frameWidth, frameHeight);
@@ -42,27 +39,33 @@ public class Player {
 
         currentFrame = 0;
         lastFrameChangeTime = System.currentTimeMillis();
+
+        // Ajustar hitbox al tamaño real del frame
+        hitbox = new Rect(x, y, x + frameWidth, y + frameHeight);
     }
+
 
     public void update() {
         if (isJumping) {
             velocity += 1; // Simulación de gravedad
             y += velocity;
-            if (y >= 600) { // Suelo (no dejar que el personaje pase de la altura 600)
-                y = 600;
+            if (y >= 500) { // Ajusta la altura del suelo
+                y = 500;
                 isJumping = false;
                 velocity = 0;
             }
-            hitbox.set(x, y, x + frameWidth, y + frameHeight);
         }
 
-        // Actualizar animación
+        // Actualizar la animación
         long currentTime = System.currentTimeMillis();
         if (currentTime - lastFrameChangeTime > frameSpeed) {
             currentFrame = (currentFrame + 1) % frames.length;
             lastFrameChangeTime = currentTime;
         }
+
+        hitbox.set(x, y, x + frameWidth, y + frameHeight);
     }
+
 
     public void jump() {
         if (!isJumping) {

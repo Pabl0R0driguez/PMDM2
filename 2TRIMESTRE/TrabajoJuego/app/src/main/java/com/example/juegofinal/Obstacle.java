@@ -10,12 +10,17 @@ public class Obstacle {
     private Rect hitbox;
     private Paint paint;
 
-    public Obstacle(int startX, int startY) {
-        this.x = startX;
-        this.y = startY;
+    public Obstacle(int startX, int screenHeight) {
         this.width = 80;
         this.height = 50;
         this.speed = 10;
+
+        // Calcular la altura del suelo dinámicamente
+        int groundHeight = screenHeight - 150; // Ajusta 150 según el tamaño del personaje y margen
+
+        this.x = startX;
+        this.y = groundHeight - height; // Ubicar el obstáculo en el suelo
+
         this.hitbox = new Rect(x, y, x + width, y + height);
         this.paint = new Paint();
         paint.setColor(Color.BLUE);
