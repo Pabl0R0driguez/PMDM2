@@ -8,7 +8,10 @@ import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 
+import androidx.annotation.NonNull;
+
 import java.util.ArrayList;
+import java.util.Random;
 
 public class GameView extends SurfaceView implements SurfaceHolder.Callback {
     private GameThread gameThread;
@@ -24,7 +27,7 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
         super(context);
         getHolder().addCallback(this);
         gameThread = new GameThread(getHolder(), this);
-        player = new Player(context, 100, 500); // Ajustado para que coincida con los obstáculos
+        player = new Player(100, 500);
         obstacles = new ArrayList<>();
         paint = new Paint();
         score = 0;
@@ -38,7 +41,9 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
     }
 
     @Override
-    public void surfaceChanged(SurfaceHolder holder, int format, int width, int height) {}
+    public void surfaceChanged(@NonNull SurfaceHolder holder, int format, int width, int height) {
+
+    }
 
     @Override
     public void surfaceDestroyed(SurfaceHolder holder) {
@@ -60,13 +65,13 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
         player.update();
 
         long currentTime = System.currentTimeMillis();
-        if (currentTime - lastObstacleTime > 1500) {
-            obstacles.add(new Obstacle(getWidth(), 1000)); // Obstáculos a la misma altura que el personaje
+        if (currentTime - lastObstacleTime > 2500) { // 🔹 Obstáculos más separados
+            obstacles.add(new Obstacle(getWidth(), player.getY()));
             lastObstacleTime = currentTime;
         }
 
         for (int i = obstacles.size() - 1; i >= 0; i--) {
-            obstacles.get(i).update();
+            obstacles.get(i).update(player.getSpeedMultiplier());
             if (obstacles.get(i).getX() < -100) {
                 obstacles.remove(i);
                 score++;
@@ -79,10 +84,6 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
                 break;
             }
         }
-
-        if (score % 10 == 0) {
-            backgroundColor = (backgroundColor == Color.CYAN) ? Color.DKGRAY : Color.CYAN;
-        }
     }
 
     @Override
@@ -91,7 +92,7 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
         if (canvas == null) return;
 
         canvas.drawColor(backgroundColor);
-        player.draw(canvas); // Dibujar solo una vez
+        player.draw(canvas);
 
         for (Obstacle obs : obstacles) {
             obs.draw(canvas);
@@ -110,9 +111,10 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         if (event.getAction() == MotionEvent.ACTION_DOWN) {
-            player.jump();
+            player.jump(); // 🔹 Salta siempre igual al tocar
             return true;
         }
         return super.onTouchEvent(event);
     }
+
 }

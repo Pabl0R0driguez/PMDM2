@@ -25,8 +25,8 @@ public class GameThread extends Thread {
             try {
                 canvas = surfaceHolder.lockCanvas();
                 synchronized (surfaceHolder) {
-                    gameView.update(); // Actualizar el juego
-                    gameView.draw(canvas); // Dibujar el juego
+                    gameView.update();
+                    gameView.draw(canvas);
                 }
             } finally {
                 if (canvas != null) {
