@@ -1,74 +1,71 @@
 package com.example.juegofinal;
 
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.Paint;
 import android.graphics.Rect;
 
 public class Player {
     private int x, y;
-    private int radius = 20;
-    private Paint paint;
     private Rect hitbox;
+    private Bitmap bitmap;
+    private int size = 100; // Tamaño del jugador
+    private float velocityY; // Velocidad en el eje Y
+    private boolean isJumping; // Estado de salto
 
-    private boolean isJumping = false;
-    private int velocity = 0;
-    private int gravity = 1;
-    private int jumpStrength = -12; // 🔹 Salto fijo
-    private int groundY;
-
-    private float speedMultiplier = 1.0f;
-    private float speedIncreaseRate = 0.002f;
-    private float maxSpeedMultiplier = 2.0f;
-
-    public Player(int x, int groundY) {
-        this.x = x;
-        this.y = groundY;
-        this.groundY = groundY;
-        paint = new Paint();
-        paint.setColor(Color.RED);
-        hitbox = new Rect(x - radius, y - radius, x + radius, y + radius);
+    public Player(Context context, int startX, int startY) {
+        this.x = startX;
+        this.y = startY; // Ajusta esta línea para hacer que el jugador esté más bajo
+        this.bitmap = BitmapFactory.decodeResource(context.getResources(), R.drawable.messi); // Reemplaza con el nombre de tu imagen
+        this.hitbox = new Rect(x, y - size, x + size, y); // Inicializa el hitbox
     }
 
     public void update() {
+        // Actualiza la posición Y del jugador por gravedad
         if (isJumping) {
-            velocity += gravity;
-            y += velocity;
-            if (y >= groundY) {
-                y = groundY;
-                isJumping = false;
-                velocity = 0;
+            y += velocityY;
+            velocityY += 2; // Aumentar la gravedad para caer más rápido
+            if (y >= 850) { // Ajusta esta línea para definir el suelo
+                y = 850; // Restablece la posición en el suelo
+                isJumping = false; // El jugador ya no está saltando
+                velocityY = 0; // Restablece la velocidad
             }
         }
 
-        if (speedMultiplier < maxSpeedMultiplier) {
-            speedMultiplier += speedIncreaseRate;
-        }
-
-        hitbox.set(x - radius, y - radius, x + radius, y + radius);
+        // Actualiza el hitbox basado en la posición del jugador
+        hitbox.set(x, y - size, x + size, y); // Actualiza el hitbox con el tamaño actual
     }
 
     public void jump() {
         if (!isJumping) {
-            velocity = jumpStrength; // 🔹 Salto SIEMPRE igual
-            isJumping = true;
+            isJumping = true; // Cambia el estado a saltando
+            velocityY = -40; // Aumentar la velocidad inicial del salto para saltar más alto
         }
     }
 
-    public void draw(Canvas canvas) {
-        canvas.drawCircle(x, y, radius, paint);
-    }
-
     public boolean collidesWith(Obstacle obs) {
-        return Rect.intersects(hitbox, obs.getHitbox());
+        return Rect.intersects(hitbox, obs.getHitbox()); // Verifica la colisión
     }
 
-    public float getSpeedMultiplier() {
-        return speedMultiplier;
+
+
+    public void draw(Canvas canvas) {
+        // Dibuja el jugador usando la imagen
+        canvas.drawBitmap(Bitmap.createScaledBitmap(bitmap, size, size, false), x, y - size, null); // Ajusta el tamaño de la imagen si es necesario
     }
 
-    public int getY(){
-        return y;
-}
+    public Rect getHitbox() {
+        return hitbox; // Retorna el hitbox
+    }
 
+    public void setPosition(int x, int y) {
+        this.x = x; // Asegúrate de tener una variable 'x' en tu clase Player
+        this.y = y; // Asegúrate de tener una variable 'y' en tu clase Player
+    }
+
+
+    public int getY() {
+        return y; // Devuelve la posición Y del jugador
+    }
 }

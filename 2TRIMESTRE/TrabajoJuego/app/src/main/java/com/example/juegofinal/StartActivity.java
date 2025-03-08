@@ -1,3 +1,4 @@
+// StartActivity.java
 package com.example.juegofinal;
 
 import android.app.Activity;
@@ -6,18 +7,17 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-public class MainActivity extends Activity {
+public class StartActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main); // Cargar el layout de la pantalla de inicio
+        setContentView(R.layout.activity_start);
 
-        Button playButton = findViewById(R.id.boton);
+        Button playButton = findViewById(R.id.playButton);
         playButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Iniciar el juego
-                Intent intent = new Intent(MainActivity.this, GameActivity.class);
+                Intent intent = new Intent(StartActivity.this, MainActivity.class);
                 startActivity(intent);
             }
         });
